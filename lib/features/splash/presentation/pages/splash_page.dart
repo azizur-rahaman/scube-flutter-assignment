@@ -57,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
                 height: AppSizes.s120,
                 child: Image.asset(AssetManager.brandLogo),
               ),
-              SizedBox(height: AppSizes.s24),
+              // SizedBox(height: AppSizes.s24),
               Text(
                 'SCUBE',
                 style: TextStyle(
@@ -66,7 +66,7 @@ class _SplashPageState extends State<SplashPage> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: AppSizes.s8),
+              // SizedBox(height: AppSizes.s8),
               Text(
                 'Control & Monitoring System',
                 textAlign: TextAlign.center,
@@ -75,10 +75,6 @@ class _SplashPageState extends State<SplashPage> {
                   fontSize: AppSizes.font20,
                   fontWeight: FontWeight.w600,
                 ),
-              ),
-              SizedBox(height: AppSizes.s48),
-              const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ],
           ),
