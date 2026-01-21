@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/constants/app_sizes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -12,61 +15,64 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
+            padding: EdgeInsets.all(AppSizes.p24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Logo Area
                 Container(
-                  width: 80,
-                  height: 80,
+                  width: 80.w,
+                  height: 80.w,
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.bolt, color: Colors.white, size: 40),
+                  child: Icon(Icons.bolt, color: Colors.white, size: 40.sp),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: AppSizes.s16),
+                Text(
                   'SCUBE',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: AppSizes.font20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Text(
+                Text(
                   'Control & Monitoring System',
-                  style: TextStyle(color: Colors.white70, fontSize: 12),
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: AppSizes.font12,
+                  ),
                 ),
-                const SizedBox(height: 40),
+                SizedBox(height: AppSizes.s40),
 
                 // Login Card
                 Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(AppSizes.r20),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(24.0),
+                    padding: EdgeInsets.all(AppSizes.p24),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Text(
+                        Text(
                           'Login',
                           style: TextStyle(
-                            fontSize: 22,
+                            fontSize: AppSizes.font22,
                             fontWeight: FontWeight.bold,
                             color: AppColors.textPrimary,
                           ),
                         ),
-                        const SizedBox(height: 24),
+                        SizedBox(height: AppSizes.s24),
                         TextField(
                           decoration: const InputDecoration(
                             labelText: 'Username',
                             prefixIcon: Icon(Icons.person_outline),
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        SizedBox(height: AppSizes.s16),
                         TextField(
                           obscureText: true,
                           decoration: InputDecoration(
@@ -85,7 +91,7 @@ class LoginPage extends StatelessWidget {
                             child: const Text('Forgot Password?'),
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        SizedBox(height: AppSizes.s16),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -96,7 +102,7 @@ class LoginPage extends StatelessWidget {
                             child: const Text('Login'),
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        SizedBox(height: AppSizes.s16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
