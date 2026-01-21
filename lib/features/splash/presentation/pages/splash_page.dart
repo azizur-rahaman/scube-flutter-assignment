@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     debugPrint('SplashPage: Navigate to Login');
 
     if (mounted) {
-      // context.go('/login');
+      context.go('/login');
     }
   }
 
