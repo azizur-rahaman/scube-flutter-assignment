@@ -29,6 +29,7 @@ class AppColors {
   static const Color textPrimary = Color(0xFF1A1A1A);
   static const Color textSecondary = Color(0xFF757575);
   static const Color textInverse = Colors.white;
+  static const Color textDarkBlue = Color(0xFF001F3F);
 
   // Status/Functional Colors
   static const Color success = Color(0xFF4CAF50);
