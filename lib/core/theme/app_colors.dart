@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Primary Brand Colors
-  static const Color primaryBlue = Color(0xFF00A3FF); // Main action color
+  static const Color primaryBlue = Color(0xFF0096FC); // Main action color
   static const Color secondaryCyan = Color(0xFF00D1FF); // Gradient accents
 
   // Gradients

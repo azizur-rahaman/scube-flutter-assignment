@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     debugPrint('SplashPage: Navigate to Login');
 
     if (mounted) {
-      context.go('/login');
+      // context.go('/login');
     }
   }
 
@@ -42,39 +42,46 @@ class _SplashPageState extends State<SplashPage> {
     debugPrint('SplashPage: build');
     return Scaffold(
       backgroundColor: AppColors.primaryBlue,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Logo
-            SizedBox(
-              width: AppSizes.s120,
-              height: AppSizes.s120,
-              child: Image.asset(AssetManager.brandLogo),
-            ),
-            SizedBox(height: AppSizes.s24),
-            Text(
-              'SCUBE',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: AppSizes.font24,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
+      body: SafeArea(
+        child: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: AppSizes.s60),
+              // Logo
+              SizedBox(
+                width: AppSizes.s120,
+                height: AppSizes.s120,
+                child: Image.asset(AssetManager.brandLogo),
               ),
-            ),
-            SizedBox(height: AppSizes.s8),
-            Text(
-              'Control & Monitoring System',
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: AppSizes.font14,
+              SizedBox(height: AppSizes.s24),
+              Text(
+                'SCUBE',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: AppSizes.font24,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            SizedBox(height: AppSizes.s48),
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            ),
-          ],
+              SizedBox(height: AppSizes.s8),
+              Text(
+                'Control & Monitoring System',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: AppSizes.font20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: AppSizes.s48),
+              const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ],
+          ),
         ),
       ),
     );

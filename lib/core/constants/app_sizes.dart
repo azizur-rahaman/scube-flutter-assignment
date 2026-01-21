@@ -27,6 +27,8 @@ class AppSizes {
   static double s32 = 32.h;
   static double s40 = 40.h;
   static double s48 = 48.h;
+  static double s60 = 60.h;
+  static double s80 = 80.h;
   static double s120 = 120.w;
 
   // Icons
