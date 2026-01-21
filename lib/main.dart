@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
-import 'features/splash/presentation/pages/splash_page.dart';
+import 'core/routes/app_router.dart';
 
 void main() {
   runApp(const ScubeApp());
@@ -11,10 +11,10 @@ class ScubeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Scube Control & Monitoring',
       theme: AppTheme.lightTheme,
-      home: const SplashPage(),
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
     );
   }

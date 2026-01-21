@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -88,7 +89,10 @@ class LoginPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // Navigate to Home
+                              GoRouter.of(context).go('/home');
+                            },
                             child: const Text('Login'),
                           ),
                         ),

@@ -17,7 +17,9 @@ void main() {
     // Verify that Splash Page is shown
     expect(find.text('SCUBE'), findsOneWidget);
     expect(find.text('Control & Monitoring System'), findsOneWidget);
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsNothing);
+
+    // Pump frames to allow timer to complete (though we won't test full navigation here without more setup)
+    await tester.pump(const Duration(seconds: 3));
+    await tester.pumpAndSettle();
   });
 }
