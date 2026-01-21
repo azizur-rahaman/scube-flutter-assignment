@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppSizes {
   // Padding
   static double p4 = 4.w;
+  static double p6 = 6.w;
   static double p8 = 8.w;
   static double p12 = 12.w;
   static double p16 = 16.w;
@@ -13,13 +14,16 @@ class AppSizes {
 
   // Radius
   static double r4 = 4.r;
+  static double r5 = 5.r;
   static double r8 = 8.r;
+  static double r10 = 10.r;
   static double r12 = 12.r;
   static double r16 = 16.r;
   static double r20 = 20.r;
 
   // Spacing (Sized Box)
   static double s4 = 4.h;
+  static double s6 = 6.h;
   static double s8 = 8.h;
   static double s12 = 12.h;
   static double s16 = 16.h;
@@ -32,14 +36,17 @@ class AppSizes {
   static double s120 = 120.w;
 
   // Icons
+  static double icon14 = 14.sp;
   static double iconSmall = 16.sp;
   static double icon18 = 18.sp;
   static double icon20 = 20.sp;
   static double iconMedium = 24.sp;
   static double iconLarge = 32.sp;
 
-  // Font Sizes (optional, if you want strictly controlled here or just use sp in theme)
+  // Font Sizes
+  static double font9 = 9.sp;
   static double font10 = 10.sp;
+  static double font11 = 11.sp;
   static double font12 = 12.sp;
   static double font14 = 14.sp;
   static double font16 = 16.sp;

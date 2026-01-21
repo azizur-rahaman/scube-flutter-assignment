@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -56,8 +55,8 @@ class DashboardStatsGrid extends StatelessWidget {
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        crossAxisSpacing: 8.w,
-        mainAxisSpacing: 8.h,
+        crossAxisSpacing: AppSizes.p8,
+        mainAxisSpacing: AppSizes.s8,
         childAspectRatio: 2.0, // Compact height but enough for 2-line labels
       ),
       itemCount: stats.length,
@@ -90,10 +89,13 @@ class _StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.p4,
+        vertical: AppSizes.s4,
+      ),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(AppSizes.r5),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -106,11 +108,15 @@ class _StatCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CircleAvatar(
-            radius: 12.r,
+            radius: AppSizes.r12,
             backgroundColor: item.iconColor.withOpacity(0.1),
-            child: Icon(item.icon, size: 14.sp, color: item.iconColor),
+            child: Icon(
+              item.icon,
+              size: AppSizes.icon14,
+              color: item.iconColor,
+            ),
           ),
-          SizedBox(width: 6.w),
+          SizedBox(width: AppSizes.p6),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +125,7 @@ class _StatCard extends StatelessWidget {
                 Text(
                   item.value,
                   style: TextStyle(
-                    fontSize: 11.sp,
+                    fontSize: AppSizes.font12,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textPrimary,
                   ),
@@ -129,7 +135,7 @@ class _StatCard extends StatelessWidget {
                 Text(
                   item.label,
                   style: TextStyle(
-                    fontSize: 9.sp,
+                    fontSize: AppSizes.font9,
                     color: AppColors.textSecondary,
                   ),
                   maxLines: 2,
