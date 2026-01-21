@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
+  bool _isPasswordVisible = false;
 
   @override
   void initState() {
@@ -178,12 +179,22 @@ class _LoginPageState extends State<LoginPage>
 
                               // Password
                               TextField(
-                                obscureText: true,
+                                obscureText: !_isPasswordVisible,
                                 decoration: InputDecoration(
                                   hintText: 'Password',
-                                  suffixIcon: const Icon(
-                                    Icons.visibility_outlined,
-                                    color: AppColors.textSecondary,
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: AppColors.textSecondary,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
                                   ),
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: 16.w,
