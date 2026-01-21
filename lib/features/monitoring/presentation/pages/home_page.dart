@@ -48,28 +48,34 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Grid Stats (Placeholder)
-            GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 2.5,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              children: [
-                _buildStatCard(
-                  Icons.flash_on,
-                  '10000 kW',
-                  'Live AC Power',
-                  Colors.green,
-                ),
-                _buildStatCard(
-                  Icons.solar_power,
-                  '82.58 %',
-                  'Plant Generation',
-                  Colors.cyan,
-                ),
-              ],
-            ),
+            // GridView.count(
+            //   crossAxisCount: 3,
+            //   shrinkWrap: true,
+            //   physics: const NeverScrollableScrollPhysics(),
+            //   childAspectRatio: 2.5,
+            //   crossAxisSpacing: 10,
+            //   mainAxisSpacing: 10,
+            //   children: [
+            //     _buildStatCard(
+            //       Icons.flash_on,
+            //       '10000 kW',
+            //       'Live AC Power',
+            //       Colors.green,
+            //     ),
+            //     _buildStatCard(
+            //       Icons.solar_power,
+            //       '82.58 %',
+            //       'Plant Generation',
+            //       Colors.cyan,
+            //     ),
+            //     _buildStatCard(
+            //       Icons.solar_power,
+            //       '82.58 %',
+            //       'Plant Generation',
+            //       Colors.cyan,
+            //     ),
+            //   ],
+            // ),
 
             // ... more widgets would go here
           ],
