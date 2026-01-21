@@ -33,10 +33,13 @@ class AppSizes {
 
   // Icons
   static double iconSmall = 16.sp;
+  static double icon18 = 18.sp;
+  static double icon20 = 20.sp;
   static double iconMedium = 24.sp;
   static double iconLarge = 32.sp;
 
   // Font Sizes (optional, if you want strictly controlled here or just use sp in theme)
+  static double font10 = 10.sp;
   static double font12 = 12.sp;
   static double font14 = 14.sp;
   static double font16 = 16.sp;

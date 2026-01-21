@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../injection_container.dart';
@@ -19,9 +18,9 @@ class MonitoringPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => sl<MonitoringBloc>()..add(LoadMonitoringData()),
       child: Scaffold(
-        backgroundColor: Color(0xFFE8F1F8), // Light bluish gray background
+        backgroundColor: AppColors.lightBlueBg, // Light bluish gray background
         appBar: AppBar(
-          backgroundColor: Colors.white, // White AppBar
+          backgroundColor: AppColors.surface, // White AppBar
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
@@ -33,7 +32,7 @@ class MonitoringPage extends StatelessWidget {
             style: GoogleFonts.inter(
               // Using Inter or similar modern font
               color: AppColors.textDarkBlue,
-              fontSize: 18.sp,
+              fontSize: AppSizes.font18,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -49,20 +48,20 @@ class MonitoringPage extends StatelessWidget {
                   onPressed: () {},
                 ),
                 Positioned(
-                  top: 12.h,
-                  right: 12.w,
+                  top: AppSizes.s12,
+                  right: AppSizes.p12,
                   child: Container(
-                    width: 8.w,
-                    height: 8.w,
+                    width: AppSizes.p8,
+                    height: AppSizes.p8,
                     decoration: const BoxDecoration(
-                      color: Colors.red,
+                      color: AppColors.notificationRed,
                       shape: BoxShape.circle,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: AppSizes.p8),
           ],
         ),
         body: BlocBuilder<MonitoringBloc, MonitoringState>(
@@ -83,13 +82,14 @@ class MonitoringPage extends StatelessWidget {
                     // Navigate Button
                     SizedBox(
                       width: double.infinity,
-                      height: 48.h,
+                      height: AppSizes.s48,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.cyan, // Cyan/Aqua color
+                          backgroundColor:
+                              AppColors.secondaryCyan, // Cyan/Aqua color
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r),
+                            borderRadius: BorderRadius.circular(AppSizes.r8),
                           ),
                           elevation: 0,
                         ),
@@ -99,16 +99,16 @@ class MonitoringPage extends StatelessWidget {
                             Text(
                               '2nd Page Navigate',
                               style: TextStyle(
-                                fontSize: 16.sp,
+                                fontSize: AppSizes.font16,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: AppColors.textInverse,
                               ),
                             ),
-                            SizedBox(width: 4.w),
-                            const Icon(
+                            SizedBox(width: AppSizes.p4),
+                            Icon(
                               Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.white,
+                              size: AppSizes.iconSmall,
+                              color: AppColors.textInverse,
                             ),
                           ],
                         ),
@@ -130,20 +130,20 @@ class MonitoringPage extends StatelessWidget {
 
                     // System Info Header
                     Container(
-                      padding: EdgeInsets.all(12.w),
+                      padding: EdgeInsets.all(AppSizes.p12),
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.r),
+                        color: AppColors.surface,
+                        borderRadius: BorderRadius.circular(AppSizes.r8),
                       ),
                       child: Row(
                         children: [
                           Icon(
                             Icons.solar_power_outlined,
-                            size: 20.sp,
-                            color: Colors.blue,
+                            size: AppSizes.icon20,
+                            color: AppColors.primaryBlue,
                           ),
-                          SizedBox(width: 8.w),
+                          SizedBox(width: AppSizes.p8),
                           Expanded(
                             child: RichText(
                               text: TextSpan(
@@ -152,7 +152,7 @@ class MonitoringPage extends StatelessWidget {
                                     text: 'Total Num of PV Module  :  ',
                                     style: TextStyle(
                                       color: AppColors.textSecondary,
-                                      fontSize: 12.sp,
+                                      fontSize: AppSizes.font12,
                                     ),
                                   ),
                                   TextSpan(
@@ -160,7 +160,7 @@ class MonitoringPage extends StatelessWidget {
                                     style: TextStyle(
                                       color: AppColors.textPrimary,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12.sp,
+                                      fontSize: AppSizes.font12,
                                     ),
                                   ),
                                 ],
@@ -201,7 +201,7 @@ class MonitoringPage extends StatelessWidget {
                 value: systemInfo.totalAcCapacity,
               ),
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: AppSizes.p8),
             Expanded(
               child: _InfoTile(
                 icon: Icons.speed,
@@ -211,7 +211,7 @@ class MonitoringPage extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: AppSizes.s8),
         Row(
           children: [
             Expanded(
@@ -221,7 +221,7 @@ class MonitoringPage extends StatelessWidget {
                 value: systemInfo.commissioningDate,
               ),
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: AppSizes.p8),
             Expanded(
               child: _InfoTile(
                 icon: Icons.grid_view,
@@ -231,7 +231,7 @@ class MonitoringPage extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: AppSizes.s8),
         // The image shows repeated rows of AC/DC? I will just follow the JSON data structure for now.
         // Or duplicate if strictly following the image visual which has 3 rows.
         // Let's stick to unique data to be clean.
@@ -244,7 +244,7 @@ class MonitoringPage extends StatelessWidget {
                 value: systemInfo.totalAcCapacity,
               ),
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: AppSizes.p8),
             Expanded(
               child: _InfoTile(
                 icon: Icons.speed,
@@ -273,19 +273,23 @@ class _InfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12.w),
+      padding: EdgeInsets.all(AppSizes.p12),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(AppSizes.r8),
       ),
       child: Row(
         children: [
           CircleAvatar(
-            radius: 16.r,
-            backgroundColor: Colors.blue.withOpacity(0.1),
-            child: Icon(icon, size: 18.sp, color: Colors.blue),
+            radius: AppSizes.r16,
+            backgroundColor: AppColors.primaryBlue.withOpacity(0.1),
+            child: Icon(
+              icon,
+              size: AppSizes.icon18,
+              color: AppColors.primaryBlue,
+            ),
           ),
-          SizedBox(width: 8.w),
+          SizedBox(width: AppSizes.p8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,14 +297,14 @@ class _InfoTile extends StatelessWidget {
                 Text(
                   label,
                   style: TextStyle(
-                    fontSize: 10.sp,
+                    fontSize: AppSizes.font10,
                     color: AppColors.textSecondary,
                   ),
                 ),
                 Text(
                   value, // Using the value as requested
                   style: TextStyle(
-                    fontSize: 12.sp,
+                    fontSize: AppSizes.font12,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textPrimary,
                   ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   // Primary Brand Colors
   static const Color primaryBlue = Color(0xFF0096FC); // Main action color
-  static const Color secondaryCyan = Color(0xFF00D1FF); // Gradient accents
+  static const Color secondaryCyan = Color(0xFF00C0E8); // Gradient accents
 
   // Gradients
   static const LinearGradient primaryGradient = LinearGradient(
@@ -23,6 +23,9 @@ class AppColors {
 
   // Background Surfaces
   static const Color background = Color(0xFFF5F7FA); // Light grey background
+  static const Color lightBlueBg = Color(
+    0xFFE8F1F8,
+  ); // Light bluish gray background
   static const Color surface = Colors.white;
 
   // Text Colors
@@ -35,6 +38,7 @@ class AppColors {
   static const Color success = Color(0xFF4CAF50);
   static const Color warning = Color(0xFFFFA726);
   static const Color error = Color(0xFFE53935);
+  static const Color notificationRed = Colors.red;
 
   // Specific UI Elements
   static const Color inputBorder = Color(0xFFE0E0E0);
