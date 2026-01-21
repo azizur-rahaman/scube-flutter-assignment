@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/monitoring_data.dart';
 
@@ -15,37 +16,37 @@ class DashboardStatsGrid extends StatelessWidget {
       _StatItem(
         icon: Icons.bolt,
         value: data.currentPower,
-        label: 'Live AC Power',
+        label: AppStrings.liveAcPower,
         iconColor: Colors.green,
       ),
       _StatItem(
         icon: Icons.solar_power,
         value: data.plantGeneration,
-        label: 'Plant Generation',
+        label: AppStrings.plantGeneration,
         iconColor: Colors.teal,
       ),
       _StatItem(
         icon: Icons.speed,
         value: data.livePr,
-        label: 'Live PR',
+        label: AppStrings.livePr,
         iconColor: Colors.indigo,
       ),
       _StatItem(
         icon: Icons.percent,
         value: data.cumulativePr,
-        label: 'Cumulative PR',
+        label: AppStrings.cumulativePr,
         iconColor: Colors.blue,
       ),
       _StatItem(
         icon: Icons.monetization_on,
         value: data.returnPv,
-        label: 'Return PV(In Today)',
+        label: AppStrings.returnPv,
         iconColor: Colors.orange,
       ),
       _StatItem(
         icon: Icons.electric_bolt,
         value: data.totalEnergy,
-        label: 'Total Energy',
+        label: AppStrings.totalEnergy,
         iconColor: Colors.purple,
       ),
     ];

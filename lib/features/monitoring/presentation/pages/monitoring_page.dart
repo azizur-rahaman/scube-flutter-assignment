@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../injection_container.dart';
 import '../bloc/monitoring_bloc.dart';
 import '../widgets/dashboard_stats_grid.dart';
@@ -28,7 +29,7 @@ class MonitoringPage extends StatelessWidget {
           ),
           centerTitle: true,
           title: Text(
-            '1st Page',
+            AppStrings.page1Title,
             style: GoogleFonts.inter(
               // Using Inter or similar modern font
               color: AppColors.textDarkBlue,
@@ -97,7 +98,7 @@ class MonitoringPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '2nd Page Navigate',
+                              AppStrings.navigateButton,
                               style: TextStyle(
                                 fontSize: AppSizes.font16,
                                 fontWeight: FontWeight.bold,
@@ -149,7 +150,7 @@ class MonitoringPage extends StatelessWidget {
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Total Num of PV Module  :  ',
+                                    text: AppStrings.totalPvModules,
                                     style: TextStyle(
                                       color: AppColors.textSecondary,
                                       fontSize: AppSizes.font12,
@@ -197,7 +198,7 @@ class MonitoringPage extends StatelessWidget {
             Expanded(
               child: _InfoTile(
                 icon: Icons.speed,
-                label: 'Total AC Capacity',
+                label: AppStrings.totalAcCapacity,
                 value: systemInfo.totalAcCapacity,
               ),
             ),
@@ -205,7 +206,7 @@ class MonitoringPage extends StatelessWidget {
             Expanded(
               child: _InfoTile(
                 icon: Icons.speed,
-                label: 'Total DC Capacity',
+                label: AppStrings.totalDcCapacity,
                 value: systemInfo.totalDcCapacity,
               ),
             ),
@@ -217,7 +218,7 @@ class MonitoringPage extends StatelessWidget {
             Expanded(
               child: _InfoTile(
                 icon: Icons.calendar_today,
-                label: 'Date of Commissioning',
+                label: AppStrings.dateOfCommissioning,
                 value: systemInfo.commissioningDate,
               ),
             ),
@@ -225,7 +226,7 @@ class MonitoringPage extends StatelessWidget {
             Expanded(
               child: _InfoTile(
                 icon: Icons.grid_view,
-                label: 'Number of Inverter',
+                label: AppStrings.numberOfInverter,
                 value: systemInfo.inverterCount,
               ),
             ),
@@ -240,7 +241,7 @@ class MonitoringPage extends StatelessWidget {
             Expanded(
               child: _InfoTile(
                 icon: Icons.speed,
-                label: 'Total AC Capacity',
+                label: AppStrings.totalAcCapacity,
                 value: systemInfo.totalAcCapacity,
               ),
             ),
@@ -248,7 +249,7 @@ class MonitoringPage extends StatelessWidget {
             Expanded(
               child: _InfoTile(
                 icon: Icons.speed,
-                label: 'Total DC Capacity',
+                label: AppStrings.totalDcCapacity,
                 value: systemInfo.totalDcCapacity,
               ),
             ),
