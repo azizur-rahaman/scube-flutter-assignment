@@ -57,7 +57,7 @@ class DashboardStatsGrid extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 8.w,
         mainAxisSpacing: 8.h,
-        childAspectRatio: 0.9,
+        childAspectRatio: 2.0, // Compact height but enough for 2-line labels
       ),
       itemCount: stats.length,
       itemBuilder: (context, index) {
@@ -89,7 +89,7 @@ class _StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.w),
+      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(10.r),
@@ -101,30 +101,41 @@ class _StatCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CircleAvatar(
-            radius: 14.r,
+            radius: 12.r,
             backgroundColor: item.iconColor.withOpacity(0.1),
-            child: Icon(item.icon, size: 16.sp, color: item.iconColor),
+            child: Icon(item.icon, size: 14.sp, color: item.iconColor),
           ),
-          SizedBox(height: 8.h),
-          Text(
-            item.value,
-            style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
+          SizedBox(width: 6.w),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item.value,
+                  style: TextStyle(
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  item.label,
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                    color: AppColors.textSecondary,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
-          ),
-          SizedBox(height: 4.h),
-          Text(
-            item.label,
-            style: TextStyle(fontSize: 10.sp, color: AppColors.textSecondary),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
