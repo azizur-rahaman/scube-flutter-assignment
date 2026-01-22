@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import '../../../../core/constants/asset_manager.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/app_strings.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -96,7 +97,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   // SizedBox(height: AppSizes.s24),
                   Text(
-                    'SCUBE',
+                    AppStrings.appName,
                     style: TextStyle(
                       color: AppColors.textInverse,
                       fontSize: AppSizes.font24,
@@ -105,7 +106,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   // SizedBox(height: AppSizes.s8),
                   Text(
-                    'Control & Monitoring System',
+                    AppStrings.appTagline,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: AppColors.textInverse,
@@ -136,7 +137,7 @@ class _LoginPageState extends State<LoginPage>
                             children: [
                               Center(
                                 child: Text(
-                                  'Login',
+                                  AppStrings.loginTitle,
                                   style: TextStyle(
                                     fontSize: 28.sp,
                                     fontWeight: FontWeight.bold,
@@ -150,7 +151,7 @@ class _LoginPageState extends State<LoginPage>
                               // Username
                               TextField(
                                 decoration: InputDecoration(
-                                  hintText: 'Username',
+                                  hintText: AppStrings.usernameHint,
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: 16.w,
                                     vertical: 16.h,
@@ -181,7 +182,7 @@ class _LoginPageState extends State<LoginPage>
                               TextField(
                                 obscureText: !_isPasswordVisible,
                                 decoration: InputDecoration(
-                                  hintText: 'Password',
+                                  hintText: AppStrings.passwordHint,
                                   suffixIcon: IconButton(
                                     icon: Icon(
                                       _isPasswordVisible
@@ -234,7 +235,7 @@ class _LoginPageState extends State<LoginPage>
                                         MaterialTapTargetSize.shrinkWrap,
                                   ),
                                   child: Text(
-                                    'Forget password?',
+                                    AppStrings.forgotPassword,
                                     style: TextStyle(
                                       color: AppColors.textSecondary,
                                       fontSize: 14.sp,
@@ -261,7 +262,7 @@ class _LoginPageState extends State<LoginPage>
                                     elevation: 0,
                                   ),
                                   child: Text(
-                                    'Login',
+                                    AppStrings.loginButton,
                                     style: TextStyle(
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.bold,
@@ -278,7 +279,7 @@ class _LoginPageState extends State<LoginPage>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Don't have any account? ",
+                                    AppStrings.noAccount,
                                     style: TextStyle(
                                       color: AppColors.textSecondary,
                                       fontSize: 14.sp,
@@ -287,7 +288,7 @@ class _LoginPageState extends State<LoginPage>
                                   GestureDetector(
                                     onTap: () {},
                                     child: Text(
-                                      "Register Now",
+                                      AppStrings.registerNow,
                                       style: TextStyle(
                                         color: AppColors.primaryBlue,
                                         fontSize: 14.sp,

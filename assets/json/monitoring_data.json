@@ -1,0 +1,51 @@
+{
+  "current_power": "10000 kW",
+  "plant_generation": "82.58 %",
+  "live_pr": "85.61 %",
+  "cumulative_pr": "27.58 %",
+  "return_pv": "10000 ৳",
+  "total_energy": "10000 kWh",
+  "weather": {
+    "temperature": "17°C",
+    "wind_speed": "26 MPH / NW",
+    "irradiation": "15.20 w/m²",
+    "condition": "sunny"
+  },
+  "comparison": {
+    "yesterday": {
+      "ac_max_power": "1636.50 kW",
+      "net_energy": "6439.16 kWh",
+      "specific_yield": "1.25 kWh/kWp"
+    },
+    "today": {
+      "ac_max_power": "2121.88 kW",
+      "net_energy": "4875.77 kWh",
+      "specific_yield": "0.94 kWh/kWp"
+    }
+  },
+  "system_info": {
+    "pv_modules": "6372 pcs. (585 Wp each)",
+    "total_ac_capacity": "3000 KW",
+    "total_dc_capacity": "3.727 MWp",
+    "commissioning_date": "17/07/2024",
+    "inverter_count": "30"
+  },
+  "inverters": [
+    {
+      "id": "LT_01",
+      "current_power": "495.505 kWp / 440 kW",
+      "lifetime_energy": "352.96 MWh",
+      "today_energy": "273.69 kWh",
+      "prev_meter_energy": "0.00 MWh",
+      "live_power": "352.96 MWh"
+    },
+    {
+      "id": "LT_02",
+      "current_power": "495.505 kWp / 440 kW",
+      "lifetime_energy": "352.96 MWh",
+      "today_energy": "273.69 kWh",
+      "prev_meter_energy": "0.00 MWh",
+      "live_power": "352.96 MWh"
+    }
+  ]
+}
