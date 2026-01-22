@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -44,9 +45,10 @@ class MonitoringPage extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 IconButton(
-                  icon: const Icon(
-                    Icons.notifications_none,
+                  icon: const FaIcon(
+                    FontAwesomeIcons.bell,
                     color: AppColors.textPrimary,
+                    size: 20,
                   ),
                   onPressed: () {},
                 ),

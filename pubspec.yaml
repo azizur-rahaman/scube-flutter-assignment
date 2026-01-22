@@ -43,6 +43,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.3.2
   dartz: ^0.10.1
+  font_awesome_flutter: ^10.9.1
 
 dev_dependencies:
   flutter_test:
