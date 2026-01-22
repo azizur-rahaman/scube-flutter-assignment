@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/constants/asset_manager.dart';
 
 class MonitoringDetailsPage extends StatelessWidget {
   const MonitoringDetailsPage({super.key});
@@ -219,7 +220,7 @@ class MonitoringDetailsPage extends StatelessWidget {
 
                   // Data List
                   _buildDataListItem(
-                    Icons.solar_power,
+                    AssetManager.dataViewIcon,
                     Colors.lightBlue,
                     'Data View',
                     '55505.63',
@@ -228,7 +229,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                   ),
                   Divider(height: 1, color: AppColors.inputBorder),
                   _buildDataListItem(
-                    Icons.battery_charging_full,
+                    AssetManager.dataType2Icon,
                     Colors.orange,
                     'Data Type 2',
                     '55505.63',
@@ -237,7 +238,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                   ),
                   Divider(height: 1, color: AppColors.inputBorder),
                   _buildDataListItem(
-                    Icons.electric_bolt,
+                    AssetManager.dataType3Icon,
                     Colors.lightBlue,
                     'Data Type 3',
                     '55505.63',
@@ -259,12 +260,15 @@ class MonitoringDetailsPage extends StatelessWidget {
               crossAxisSpacing: AppSizes.p12,
               mainAxisSpacing: AppSizes.p12,
               children: [
-                _buildGridItem(Icons.analytics, 'Analysis Pro'),
-                _buildGridItem(Icons.bolt, 'G. Generator'),
-                _buildGridItem(Icons.energy_savings_leaf, 'Plant Summery'),
-                _buildGridItem(Icons.local_fire_department, 'Natural Gas'),
-                _buildGridItem(Icons.bolt, 'D. Generator'),
-                _buildGridItem(Icons.water_drop, 'Water Process'),
+                _buildGridItem(AssetManager.analysisProIcon, 'Analysis Pro'),
+                _buildGridItem(AssetManager.gGeneratorIcon, 'G. Generator'),
+                _buildGridItem(AssetManager.plantSummaryIcon, 'Plant Summery'),
+                _buildGridItem(AssetManager.naturalGasIcon, 'Natural Gas'),
+                _buildGridItem(
+                  AssetManager.gGeneratorIcon,
+                  'D. Generator',
+                ), // Reusing G Generator for D Generator as placeholder or if same icon
+                _buildGridItem(AssetManager.waterProcessIcon, 'Water Process'),
               ],
             ),
             SizedBox(height: AppSizes.s24),
@@ -301,7 +305,7 @@ class MonitoringDetailsPage extends StatelessWidget {
   }
 
   Widget _buildDataListItem(
-    IconData icon,
+    String iconPath,
     Color color,
     String title,
     String d1,
@@ -330,7 +334,7 @@ class MonitoringDetailsPage extends StatelessWidget {
               border: Border.all(color: AppColors.inputBorder.withOpacity(0.5)),
               borderRadius: BorderRadius.circular(AppSizes.r8),
             ),
-            child: Icon(icon, color: color, size: 24.sp),
+            child: Image.asset(iconPath, width: 24.sp, height: 24.sp),
           ),
           SizedBox(width: AppSizes.p12),
           Expanded(
@@ -393,7 +397,7 @@ class MonitoringDetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildGridItem(IconData icon, String title) {
+  Widget _buildGridItem(String iconPath, String title) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.p8),
       decoration: BoxDecoration(
@@ -405,15 +409,8 @@ class MonitoringDetailsPage extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(4.w),
-            decoration: BoxDecoration(
-              color: Colors.orange.shade50, // Placeholder bg
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Icon(
-              icon,
-              size: 20.sp,
-              color: Colors.orange,
-            ), // Placeholder color
+            decoration: BoxDecoration(color: Colors.transparent),
+            child: Image.asset(iconPath, width: 20.sp, height: 20.sp),
           ),
           SizedBox(width: 8.w),
           Expanded(

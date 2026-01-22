@@ -44,4 +44,14 @@ class AssetManager {
   static const String todayEnergyIcon = '$_basePath/icons/today-energy.png';
   static const String inverterPowerHeaderIcon =
       '$_basePath/icons/inverter-power-header-icon.png';
+
+  // Page 2 Icons
+  static const String analysisProIcon = '$_basePath/icons/analysis-pro.png';
+  static const String dataType2Icon = '$_basePath/icons/data-type-2.png';
+  static const String dataType3Icon = '$_basePath/icons/data-type-3.png';
+  static const String dataViewIcon = '$_basePath/icons/data-view.png';
+  static const String gGeneratorIcon = '$_basePath/icons/ggenerator.png';
+  static const String naturalGasIcon = '$_basePath/icons/natural-gas.png';
+  static const String plantSummaryIcon = '$_basePath/icons/plant-summery.png';
+  static const String waterProcessIcon = '$_basePath/icons/water-process.png';
 }
