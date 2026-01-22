@@ -45,4 +45,30 @@ class AppStrings {
   static const String todayEnergy = 'Today Energy';
   static const String prevMeterEnergy = 'Prev. Meter Energy';
   static const String livePower = 'Live Power';
+
+  // Page 2
+  static const String page2Title = '2nd Page';
+  static const String navigateBack = '1st Page Navigate';
+  static const String tabSummary = 'Summary';
+  static const String tabSld = 'SLD';
+  static const String tabData = 'Data';
+  static const String electricity = 'Electricity';
+  static const String totalPower = 'Total Power';
+  static const String source = 'Source';
+  static const String load = 'Load';
+  static const String dataView = 'Data View';
+  static const String dataType2 = 'Data Type 2';
+  static const String dataType3 = 'Data Type 3';
+  static const String active = 'Active';
+  static const String inactive = 'Inactive';
+  static const String data1 = 'Data 1    :  ';
+  static const String data2 = 'Data 2    :  ';
+
+  // Bottom Grid
+  static const String analysisPro = 'Analysis Pro';
+  static const String gGenerator = 'G. Generator';
+  static const String plantSummary = 'Plant Summery';
+  static const String naturalGas = 'Natural Gas';
+  static const String dGenerator = 'D. Generator';
+  static const String waterProcess = 'Water Process';
 }

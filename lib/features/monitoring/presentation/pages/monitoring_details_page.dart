@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/asset_manager.dart';
 
@@ -17,7 +18,7 @@ class MonitoringDetailsPage extends StatelessWidget {
       backgroundColor: AppColors.lightBlueBg,
       appBar: AppBar(
         title: Text(
-          '2nd Page',
+          AppStrings.page2Title,
           style: GoogleFonts.inter(
             color: AppColors.textDarkBlue,
             fontSize: AppSizes.font18,
@@ -64,7 +65,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '1st Page Navigate',
+                      AppStrings.navigateBack,
                       style: TextStyle(
                         fontSize: AppSizes.font12,
                         fontWeight: FontWeight.bold,
@@ -110,9 +111,9 @@ class MonitoringDetailsPage extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        _buildTab('Summary', true),
-                        _buildTab('SLD', false),
-                        _buildTab('Data', false),
+                        _buildTab(AppStrings.tabSummary, true),
+                        _buildTab(AppStrings.tabSld, false),
+                        _buildTab(AppStrings.tabData, false),
                       ],
                     ),
                   ),
@@ -121,7 +122,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(AppSizes.p16),
                     child: Text(
-                      'Electricity',
+                      AppStrings.electricity,
                       style: GoogleFonts.inter(
                         fontSize: AppSizes.font16,
                         fontWeight: FontWeight.bold,
@@ -152,14 +153,14 @@ class MonitoringDetailsPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Total Power',
+                            AppStrings.totalPower,
                             style: TextStyle(
                               fontSize: AppSizes.font12,
                               color: AppColors.textSecondary,
                             ),
                           ),
                           Text(
-                            '5.53 kw',
+                            '5.53 kw', // Dynamic value, keeping as is or could be string formatted
                             style: TextStyle(
                               fontSize: AppSizes.font18,
                               fontWeight: FontWeight.bold,
@@ -187,11 +188,12 @@ class MonitoringDetailsPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: 6.h),
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: AppColors
+                                  .primaryBlue, // Used AppColors.primaryBlue
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Text(
-                              'Source',
+                              AppStrings.source,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -203,7 +205,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                         Expanded(
                           child: Center(
                             child: Text(
-                              'Load',
+                              AppStrings.load,
                               style: TextStyle(
                                 color: AppColors.textSecondary,
                                 fontWeight: FontWeight.bold,
@@ -222,28 +224,28 @@ class MonitoringDetailsPage extends StatelessWidget {
                   _buildDataListItem(
                     AssetManager.dataViewIcon,
                     Colors.lightBlue,
-                    'Data View',
+                    AppStrings.dataView,
                     '55505.63',
                     '58805.63',
-                    'Active',
+                    AppStrings.active,
                   ),
                   Divider(height: 1, color: AppColors.inputBorder),
                   _buildDataListItem(
                     AssetManager.dataType2Icon,
                     Colors.orange,
-                    'Data Type 2',
+                    AppStrings.dataType2,
                     '55505.63',
                     '58805.63',
-                    'Active',
+                    AppStrings.active,
                   ),
                   Divider(height: 1, color: AppColors.inputBorder),
                   _buildDataListItem(
                     AssetManager.dataType3Icon,
                     Colors.lightBlue,
-                    'Data Type 3',
+                    AppStrings.dataType3,
                     '55505.63',
                     '58805.63',
-                    'Inactive',
+                    AppStrings.inactive,
                     isLast: true,
                   ),
                 ],
@@ -260,15 +262,30 @@ class MonitoringDetailsPage extends StatelessWidget {
               crossAxisSpacing: AppSizes.p12,
               mainAxisSpacing: AppSizes.p12,
               children: [
-                _buildGridItem(AssetManager.analysisProIcon, 'Analysis Pro'),
-                _buildGridItem(AssetManager.gGeneratorIcon, 'G. Generator'),
-                _buildGridItem(AssetManager.plantSummaryIcon, 'Plant Summery'),
-                _buildGridItem(AssetManager.naturalGasIcon, 'Natural Gas'),
+                _buildGridItem(
+                  AssetManager.analysisProIcon,
+                  AppStrings.analysisPro,
+                ),
                 _buildGridItem(
                   AssetManager.gGeneratorIcon,
-                  'D. Generator',
+                  AppStrings.gGenerator,
+                ),
+                _buildGridItem(
+                  AssetManager.plantSummaryIcon,
+                  AppStrings.plantSummary,
+                ),
+                _buildGridItem(
+                  AssetManager.naturalGasIcon,
+                  AppStrings.naturalGas,
+                ),
+                _buildGridItem(
+                  AssetManager.gGeneratorIcon,
+                  AppStrings.dGenerator,
                 ), // Reusing G Generator for D Generator as placeholder or if same icon
-                _buildGridItem(AssetManager.waterProcessIcon, 'Water Process'),
+                _buildGridItem(
+                  AssetManager.waterProcessIcon,
+                  AppStrings.waterProcess,
+                ),
               ],
             ),
             SizedBox(height: AppSizes.s24),
@@ -287,6 +304,7 @@ class MonitoringDetailsPage extends StatelessWidget {
           borderRadius: isActive
               ? BorderRadius.only(
                   topLeft: Radius.circular(AppSizes.r10),
+                  topRight: Radius.circular(AppSizes.r10),
                 ) // Visual fix approx
               : null,
         ),
