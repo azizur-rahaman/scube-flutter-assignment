@@ -25,4 +25,14 @@ class AssetManager {
   static const String totalEnergyIcon = '$_basePath/icons/total-energy.png';
   static const String totalNumOfPvModuleIcon =
       '$_basePath/icons/total-num-of-pv-module.png';
+
+  // Capacity Grid Icons
+  static const String totalAcCapacityIcon =
+      '$_basePath/icons/total-ac-capacity.png';
+  static const String totalDcCapacityIcon =
+      '$_basePath/icons/total-dc-capacity.png';
+  static const String dateOfCommissioningIcon =
+      '$_basePath/icons/date-of-commissioning.png';
+  static const String numberOfInverterIcon =
+      '$_basePath/icons/number-of-inverter.png';
 }

@@ -206,7 +206,7 @@ class MonitoringPage extends StatelessWidget {
           children: [
             Expanded(
               child: InfoTile(
-                icon: Icons.speed,
+                iconPath: AssetManager.totalAcCapacityIcon,
                 label: AppStrings.totalAcCapacity,
                 value: systemInfo.totalAcCapacity,
               ),
@@ -214,7 +214,7 @@ class MonitoringPage extends StatelessWidget {
             SizedBox(width: AppSizes.p8),
             Expanded(
               child: InfoTile(
-                icon: Icons.speed,
+                iconPath: AssetManager.totalDcCapacityIcon,
                 label: AppStrings.totalDcCapacity,
                 value: systemInfo.totalDcCapacity,
               ),
@@ -226,7 +226,7 @@ class MonitoringPage extends StatelessWidget {
           children: [
             Expanded(
               child: InfoTile(
-                icon: Icons.calendar_today,
+                iconPath: AssetManager.dateOfCommissioningIcon,
                 label: AppStrings.dateOfCommissioning,
                 value: systemInfo.commissioningDate,
               ),
@@ -234,7 +234,7 @@ class MonitoringPage extends StatelessWidget {
             SizedBox(width: AppSizes.p8),
             Expanded(
               child: InfoTile(
-                icon: Icons.grid_view,
+                iconPath: AssetManager.numberOfInverterIcon,
                 label: AppStrings.numberOfInverter,
                 value: systemInfo.inverterCount,
               ),
@@ -242,14 +242,11 @@ class MonitoringPage extends StatelessWidget {
           ],
         ),
         SizedBox(height: AppSizes.s8),
-        // The image shows repeated rows of AC/DC? I will just follow the JSON data structure for now.
-        // Or duplicate if strictly following the image visual which has 3 rows.
-        // Let's stick to unique data to be clean.
         Row(
           children: [
             Expanded(
               child: InfoTile(
-                icon: Icons.speed,
+                iconPath: AssetManager.totalAcCapacityIcon,
                 label: AppStrings.totalAcCapacity,
                 value: systemInfo.totalAcCapacity,
               ),
@@ -257,7 +254,7 @@ class MonitoringPage extends StatelessWidget {
             SizedBox(width: AppSizes.p8),
             Expanded(
               child: InfoTile(
-                icon: Icons.speed,
+                iconPath: AssetManager.totalDcCapacityIcon,
                 label: AppStrings.totalDcCapacity,
                 value: systemInfo.totalDcCapacity,
               ),
