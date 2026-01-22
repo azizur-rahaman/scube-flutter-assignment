@@ -12,6 +12,7 @@ import '../../../../core/constants/asset_manager.dart';
 import '../../../../core/routes/app_router.dart';
 import '../../../../core/widgets/gradient_scrollbar.dart';
 import '../../../../core/widgets/page_navigator.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 
 class MonitoringDetailsPage extends StatefulWidget {
   const MonitoringDetailsPage({super.key});
@@ -33,30 +34,11 @@ class _MonitoringDetailsPageState extends State<MonitoringDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.lightBlueBg,
-      appBar: AppBar(
-        title: Text(
-          AppStrings.page2Title,
-          style: GoogleFonts.inter(
-            color: AppColors.textDarkBlue,
-            fontSize: AppSizes.font18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: AppColors.surface,
-        iconTheme: const IconThemeData(color: AppColors.textPrimary),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.bell,
-              color: AppColors.textPrimary,
-              size: 20,
-            ),
-          ),
-          SizedBox(width: AppSizes.p12),
-        ],
+      appBar: const CustomAppBar(
+        title: AppStrings.page2Title,
+        showNotification: true, // Assuming we want notification bell here too
+        showLeading:
+            false, // The original page didn't have a functional leading back button in AppBar, it had a manual body button
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(AppSizes.p16),

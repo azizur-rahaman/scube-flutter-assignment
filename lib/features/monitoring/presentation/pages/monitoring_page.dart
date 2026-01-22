@@ -13,6 +13,7 @@ import '../bloc/monitoring_bloc.dart';
 import '../widgets/dashboard_stats_grid.dart';
 import '../widgets/weather_carousel.dart';
 import '../../../../core/widgets/page_navigator.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 import '../widgets/comparison_table.dart';
 import '../widgets/inverter_list.dart';
 import '../widgets/info_tile.dart';
@@ -26,51 +27,10 @@ class MonitoringPage extends StatelessWidget {
       create: (_) => sl<MonitoringBloc>()..add(LoadMonitoringData()),
       child: Scaffold(
         backgroundColor: AppColors.lightBlueBg, // Light bluish gray background
-        appBar: AppBar(
-          backgroundColor: AppColors.surface, // White AppBar
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
-            onPressed: () {}, // Or GoRouter.pop
-          ),
-          centerTitle: true,
-          title: Text(
-            AppStrings.page1Title,
-            style: GoogleFonts.inter(
-              // Using Inter or similar modern font
-              color: AppColors.textDarkBlue,
-              fontSize: AppSizes.font18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          actions: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                IconButton(
-                  icon: const FaIcon(
-                    FontAwesomeIcons.bell,
-                    color: AppColors.textPrimary,
-                    size: 20,
-                  ),
-                  onPressed: () {},
-                ),
-                Positioned(
-                  top: AppSizes.s12,
-                  right: AppSizes.p12,
-                  child: Container(
-                    width: AppSizes.p8,
-                    height: AppSizes.p8,
-                    decoration: const BoxDecoration(
-                      color: AppColors.notificationRed,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(width: AppSizes.p12),
-          ],
+        appBar: const CustomAppBar(
+          title: AppStrings.page1Title,
+          showLeading:
+              true, // Though leading icon does nothing in the original code, we keep it consistent
         ),
         body: BlocBuilder<MonitoringBloc, MonitoringState>(
           builder: (context, state) {
