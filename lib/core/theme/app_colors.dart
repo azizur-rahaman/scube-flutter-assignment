@@ -41,6 +41,12 @@ class AppColors {
   static const Color error = Color(0xFFE53935);
   static const Color notificationRed = Colors.red;
 
+  // Status Colors
+  static const Color infoBg = Color(0xFFE1F5FE); // lightBlue.shade50
+  static const Color warningBg = Color(0xFFFFF8E1); // amber.shade50
+  static const Color errorBg = Color(0xFFFFF3E0); // orange.shade50
+  static const Color successBg = Color(0xFFF3E5F5); // purple.shade50
+
   // Specific UI Elements
   static const Color inputBorder = Color(0xFF9AA9BC);
   static const Color divider = Color(0xFFEEEEEE);

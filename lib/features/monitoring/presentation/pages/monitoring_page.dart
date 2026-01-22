@@ -85,7 +85,7 @@ class MonitoringPage extends StatelessWidget {
                     // Navigate Button
                     SizedBox(
                       width: double.infinity,
-                      height: AppSizes.s48,
+                      height: AppSizes.s32,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
@@ -102,7 +102,7 @@ class MonitoringPage extends StatelessWidget {
                             Text(
                               AppStrings.navigateButton,
                               style: TextStyle(
-                                fontSize: AppSizes.font16,
+                                fontSize: AppSizes.font12,
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.textInverse,
                               ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/constants/asset_manager.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../domain/entities/monitoring_data.dart';
 
 class InverterList extends StatelessWidget {
@@ -27,10 +29,11 @@ class _InverterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: AppSizes.s103, // Fixed height per user request
       margin: EdgeInsets.only(bottom: AppSizes.p16),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(AppSizes.r8),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -43,7 +46,7 @@ class _InverterCard extends StatelessWidget {
         children: [
           // Header
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
             decoration: BoxDecoration(
               border: Border(bottom: BorderSide(color: AppColors.inputBorder)),
             ),
@@ -53,14 +56,19 @@ class _InverterCard extends StatelessWidget {
                 Text(
                   inverter.id,
                   style: TextStyle(
-                    fontSize: 14.sp,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textPrimary,
                   ),
                 ),
                 Row(
                   children: [
-                    Icon(Icons.bolt, color: Colors.blue, size: 16.sp),
+                    Image.asset(
+                      AssetManager.inverterPowerHeaderIcon,
+                      width: 14.w,
+                      height: 14.w,
+                      fit: BoxFit.contain,
+                    ),
                     SizedBox(width: 4.w),
                     Text(
                       inverter.currentPower,
@@ -75,46 +83,59 @@ class _InverterCard extends StatelessWidget {
               ],
             ),
           ),
-          // Body Grid
-          Padding(
-            padding: EdgeInsets.all(16.w),
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              childAspectRatio: 2.5,
-              mainAxisSpacing: 12.h,
-              crossAxisSpacing: 16.w,
-              children: [
-                _InfoItem(
-                  icon: Icons.electric_bolt,
-                  label: 'Lifetime Energy',
-                  value: inverter.lifetimeEnergy,
-                  iconBg: Colors.lightBlue.shade50,
-                  iconColor: Colors.lightBlue,
-                ),
-                _InfoItem(
-                  icon: Icons.hourglass_bottom,
-                  label: 'Today Energy',
-                  value: inverter.todayEnergy,
-                  iconBg: Colors.amber.shade50,
-                  iconColor: Colors.amber,
-                ),
-                _InfoItem(
-                  icon: Icons.history, // Placeholder for meter
-                  label: 'Prev. Meter Energy',
-                  value: inverter.prevMeterEnergy,
-                  iconBg: Colors.orange.shade50,
-                  iconColor: Colors.orange,
-                ),
-                _InfoItem(
-                  icon: Icons.speed,
-                  label: 'Live Power',
-                  value: inverter.livePower,
-                  iconBg: Colors.purple.shade50,
-                  iconColor: Colors.purple,
-                ),
-              ],
+          // Body
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Row 1
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _InfoItem(
+                          iconPath: AssetManager.lifeEnergyIcon,
+                          label: AppStrings.lifetimeEnergy,
+                          value: inverter.lifetimeEnergy,
+                          iconBg: AppColors.infoBg,
+                        ),
+                      ),
+                      SizedBox(width: AppSizes.p8),
+                      Expanded(
+                        child: _InfoItem(
+                          iconPath: AssetManager.todayEnergyIcon,
+                          label: AppStrings.todayEnergy,
+                          value: inverter.todayEnergy,
+                          iconBg: AppColors.warningBg,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Row 2
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _InfoItem(
+                          iconPath: AssetManager.prevMeterEnergyIcon,
+                          label: AppStrings.prevMeterEnergy,
+                          value: inverter.prevMeterEnergy,
+                          iconBg: AppColors.errorBg,
+                        ),
+                      ),
+                      SizedBox(width: AppSizes.p8),
+                      Expanded(
+                        child: _InfoItem(
+                          iconPath: AssetManager.livePowerIcon,
+                          label: AppStrings.livePower,
+                          value: inverter.livePower,
+                          iconBg: AppColors.successBg,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -124,18 +145,16 @@ class _InverterCard extends StatelessWidget {
 }
 
 class _InfoItem extends StatelessWidget {
-  final IconData icon;
+  final String iconPath;
   final String label;
   final String value;
   final Color iconBg;
-  final Color iconColor;
 
   const _InfoItem({
-    required this.icon,
+    required this.iconPath,
     required this.label,
     required this.value,
     required this.iconBg,
-    required this.iconColor,
   });
 
   @override
@@ -143,28 +162,41 @@ class _InfoItem extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(8.w),
-          decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
-          child: Icon(icon, size: 16.sp, color: iconColor),
+          width: AppSizes.s26,
+          height: AppSizes.s26,
+          decoration: BoxDecoration(
+            color: iconBg,
+            borderRadius: BorderRadius.circular(AppSizes.r4),
+          ),
+          child: Image.asset(iconPath, fit: BoxFit.contain),
         ),
-        SizedBox(width: 8.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              label,
-              style: TextStyle(fontSize: 10.sp, color: AppColors.textSecondary),
-            ),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
+        SizedBox(width: 6.w),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 9.sp,
+                  color: AppColors.textSecondary,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ],
     );

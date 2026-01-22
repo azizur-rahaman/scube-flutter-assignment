@@ -35,4 +35,13 @@ class AssetManager {
       '$_basePath/icons/date-of-commissioning.png';
   static const String numberOfInverterIcon =
       '$_basePath/icons/number-of-inverter.png';
+
+  // Inverter Grid Icons
+  static const String lifeEnergyIcon = '$_basePath/icons/life-energy.png';
+  static const String livePowerIcon = '$_basePath/icons/live-power.png';
+  static const String prevMeterEnergyIcon =
+      '$_basePath/icons/prev-meter-energy.png';
+  static const String todayEnergyIcon = '$_basePath/icons/today-energy.png';
+  static const String inverterPowerHeaderIcon =
+      '$_basePath/icons/inverter-power-header-icon.png';
 }

@@ -39,4 +39,10 @@ class AppStrings {
   static const String acMaxPower = 'AC Max Power';
   static const String netEnergy = 'Net Energy';
   static const String specificYield = 'Specific Yield';
+
+  // Inverter List
+  static const String lifetimeEnergy = 'Lifetime Energy';
+  static const String todayEnergy = 'Today Energy';
+  static const String prevMeterEnergy = 'Prev. Meter Energy';
+  static const String livePower = 'Live Power';
 }
