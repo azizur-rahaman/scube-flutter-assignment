@@ -22,15 +22,18 @@ class AppSizes {
   static double r20 = 20.r;
 
   // Spacing (Sized Box)
+  static double s2 = 2.h;
   static double s4 = 4.h;
   static double s6 = 6.h;
   static double s8 = 8.h;
   static double s12 = 12.h;
   static double s16 = 16.h;
   static double s24 = 24.h;
+  static double s30 = 30.w;
   static double s32 = 32.h;
   static double s40 = 40.h;
   static double s48 = 48.h;
+  static double s57 = 57.w;
   static double s60 = 60.h;
   static double s80 = 80.h;
   static double s120 = 120.w;

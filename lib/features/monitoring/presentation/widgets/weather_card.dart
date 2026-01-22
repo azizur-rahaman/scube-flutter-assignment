@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_sizes.dart';
-import '../../../../core/constants/app_strings.dart';
-import '../../../../core/constants/asset_manager.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../domain/entities/monitoring_data.dart';
 
 class WeatherCard extends StatelessWidget {
-  final WeatherInfo weather;
+  final String mainTitle;
+  final String mainSubTitle;
+  final String mainIconPath;
+  final String secondaryTopTitle;
+  final String secondaryTopSubTitle;
+  final String secondaryBottomTitle;
+  final String secondaryBottomSubTitle;
+  final String secondaryIconPath;
 
-  const WeatherCard({super.key, required this.weather});
+  const WeatherCard({
+    super.key,
+    required this.mainTitle,
+    required this.mainSubTitle,
+    required this.mainIconPath,
+    required this.secondaryTopTitle,
+    required this.secondaryTopSubTitle,
+    required this.secondaryBottomTitle,
+    required this.secondaryBottomSubTitle,
+    required this.secondaryIconPath,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: AppSizes.s80,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppSizes.r16),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF5B7FFF), Color(0xFFA678D6)],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
+        borderRadius: BorderRadius.circular(AppSizes.r8),
+        gradient: AppColors.weatherGradient,
       ),
       child: IntrinsicHeight(
         child: Row(
@@ -36,7 +45,7 @@ class WeatherCard extends StatelessWidget {
               width: AppSizes.s135,
               decoration: BoxDecoration(
                 color: AppColors.surface,
-                borderRadius: BorderRadius.all(Radius.circular(AppSizes.r16)),
+                borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +56,7 @@ class WeatherCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          weather.temperature,
+                          mainTitle,
                           style: TextStyle(
                             fontSize: AppSizes.icon20,
                             fontWeight: FontWeight.bold,
@@ -55,9 +64,9 @@ class WeatherCard extends StatelessWidget {
                             height: 1.0,
                           ),
                         ),
-                        SizedBox(height: 2.h),
+                        SizedBox(height: AppSizes.s2),
                         Text(
-                          AppStrings.moduleTemperature,
+                          mainSubTitle,
                           style: TextStyle(
                             fontSize: AppSizes.font10, // Reduced font size
                             color: AppColors.textSecondary,
@@ -69,12 +78,10 @@ class WeatherCard extends StatelessWidget {
                   ),
                   // Thermometer Icon
                   SizedBox(
-                    height: 60.h, // Reduced from 90 to 60 to fit 80h container
-                    width: 30.w,
-                    child: Image.asset(
-                      AssetManager.thermometerIcon,
-                      fit: BoxFit.contain,
-                    ),
+                    height: AppSizes
+                        .s60, // Reduced from 90 to 60 to fit 80h container
+                    width: AppSizes.s30,
+                    child: Image.asset(mainIconPath, fit: BoxFit.contain),
                   ),
                 ],
               ),
@@ -105,43 +112,70 @@ class WeatherCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              weather.windSpeed,
+                              secondaryTopTitle,
                               style: TextStyle(
-                                fontSize: AppSizes.font12,
-                                fontWeight: FontWeight.bold,
+                                fontSize: AppSizes.font16,
+                                fontWeight: FontWeight.w600,
                                 color: Colors.white,
                                 height: 1.0,
                               ),
                             ),
                             Text(
-                              AppStrings.windSpeedDirection,
+                              secondaryTopSubTitle,
                               style: TextStyle(
                                 fontSize:
-                                    AppSizes.font8, // Very small textual label
+                                    AppSizes.font10, // Very small textual label
+                                fontWeight: FontWeight.bold,
                                 color: Colors.white70,
                                 height: 1.2,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 4.h), // Minimal spacing
+                        SizedBox(height: AppSizes.s4), // Minimal spacing
                         // Irradiation
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              weather.irradiation,
-                              style: TextStyle(
-                                fontSize: AppSizes.font12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                height: 1.0,
-                              ),
+                            // Parse irradiation string "15.20 w/m²" -> ["15.20", "w/m²"]
+                            Builder(
+                              builder: (context) {
+                                final parts = secondaryBottomTitle.split(' ');
+                                final value = parts.isNotEmpty ? parts[0] : '';
+                                final unit = parts.length > 1
+                                    ? ' ${parts.sublist(1).join(' ')}'
+                                    : '';
+
+                                return RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: value,
+                                        style: TextStyle(
+                                          fontSize: AppSizes.font16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          height: 1.0,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: unit,
+                                        style: TextStyle(
+                                          fontSize: AppSizes.font11,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          height: 1.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             ),
                             Text(
-                              AppStrings.effectiveIrradiation,
+                              secondaryBottomSubTitle,
                               style: TextStyle(
-                                fontSize: AppSizes.font8,
+                                fontSize: AppSizes.font10,
                                 color: Colors.white70,
                                 height: 1.2,
                               ),
@@ -150,10 +184,10 @@ class WeatherCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Icon(
-                      Icons.wb_cloudy_outlined,
-                      color: Colors.white.withOpacity(0.8),
-                      size: AppSizes.iconMedium, // Reduced from Large
+                    SizedBox(
+                      height: AppSizes.s48,
+                      width: AppSizes.s57,
+                      child: Image.asset(secondaryIconPath),
                     ),
                   ],
                 ),

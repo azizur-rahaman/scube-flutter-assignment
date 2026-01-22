@@ -7,7 +7,7 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../injection_container.dart';
 import '../bloc/monitoring_bloc.dart';
 import '../widgets/dashboard_stats_grid.dart';
-import '../widgets/weather_card.dart';
+import '../widgets/weather_carousel.dart';
 import '../widgets/comparison_table.dart';
 import '../widgets/inverter_list.dart';
 
@@ -121,8 +121,13 @@ class MonitoringPage extends StatelessWidget {
                     DashboardStatsGrid(data: state.data),
                     SizedBox(height: AppSizes.s16),
 
-                    // Weather Card
-                    WeatherCard(weather: state.data.weather),
+                    // Weather Carousel
+                    WeatherCarousel(
+                      temperature: state.data.weather.temperature,
+                      windSpeed: state.data.weather.windSpeed,
+                      irradiation: state.data.weather.irradiation,
+                    ),
+
                     SizedBox(height: AppSizes.s16),
 
                     // Comparison Table
