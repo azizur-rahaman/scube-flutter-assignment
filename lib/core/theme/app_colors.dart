@@ -5,6 +5,10 @@ class AppColors {
   static const Color primaryBlue = Color(0xFF0096FC); // Main action color
   static const Color secondaryCyan = Color(0xFF00C0E8); // Gradient accents
 
+  // Scrollbar Colors
+  static const Color scrollbarLight = Color(0xFF4E91FD);
+  static const Color scrollbarDark = Color(0xFF080B7F);
+
   // Gradients
   static const LinearGradient primaryGradient = LinearGradient(
     colors: [primaryBlue, secondaryCyan],
@@ -19,6 +23,12 @@ class AppColors {
     ], // Placeholder for purple/blue weather card
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
+  );
+
+  static const LinearGradient scrollbarGradient = LinearGradient(
+    colors: [scrollbarLight, scrollbarDark],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
   );
 
   // Background Surfaces

@@ -10,6 +10,8 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/asset_manager.dart';
 
 import '../../../../core/routes/app_router.dart';
+import '../../../../core/widgets/gradient_scrollbar.dart';
+import '../../../../core/widgets/page_navigator.dart';
 
 class MonitoringDetailsPage extends StatefulWidget {
   const MonitoringDetailsPage({super.key});
@@ -61,43 +63,10 @@ class _MonitoringDetailsPageState extends State<MonitoringDetailsPage> {
         child: Column(
           children: [
             // 1. Top Navigation Button
-            SizedBox(
-              width: double.infinity,
-              height: AppSizes.s32,
-              child: ElevatedButton(
-                onPressed: () {
-                  context.go(AppRouter.monitoringPath);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.secondaryCyan, // Cyan/Aqua color
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppSizes.r4),
-                  ),
-                  elevation: 0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      AppStrings.firstPageNavigate,
-                      style: TextStyle(
-                        fontSize: AppSizes.font12,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textInverse,
-                      ),
-                    ),
-                    SizedBox(width: AppSizes.p4),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: AppSizes.font12,
-                      color: AppColors.textInverse,
-                    ),
-                  ],
-                ),
-              ),
+            PageNavigator(
+              title: AppStrings.firstPageNavigate,
+              onPressed: () => context.go(AppRouter.monitoringPath),
             ),
-
             SizedBox(height: AppSizes.s16),
 
             // 2. Main Content Card
@@ -253,14 +222,18 @@ class _MonitoringDetailsPageState extends State<MonitoringDetailsPage> {
                       margin: EdgeInsets.symmetric(horizontal: AppSizes.p16),
                       child: Stack(
                         children: [
-                          Scrollbar(
-                            thumbVisibility: true,
+                          GradientScrollbar(
                             controller: _scrollController,
                             thickness: 4.w,
                             radius: Radius.circular(AppSizes.r4),
+                            gradient: AppColors.scrollbarGradient,
+                            padding: EdgeInsets.only(right: 2.w),
                             child: ListView.separated(
                               controller: _scrollController,
-                              padding: EdgeInsets.zero,
+                              padding: EdgeInsets.only(
+                                right: AppSizes.p12,
+                                bottom: AppSizes.p16,
+                              ),
                               itemCount: 3,
                               separatorBuilder: (context, index) =>
                                   const SizedBox.shrink(),

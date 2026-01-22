@@ -12,6 +12,7 @@ import '../../../../injection_container.dart';
 import '../bloc/monitoring_bloc.dart';
 import '../widgets/dashboard_stats_grid.dart';
 import '../widgets/weather_carousel.dart';
+import '../../../../core/widgets/page_navigator.dart';
 import '../widgets/comparison_table.dart';
 import '../widgets/inverter_list.dart';
 import '../widgets/info_tile.dart';
@@ -87,42 +88,10 @@ class MonitoringPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Navigate Button
-                    SizedBox(
-                      width: double.infinity,
-                      height: AppSizes.s32,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          context.push(AppRouter.monitoringDetailsPath);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              AppColors.secondaryCyan, // Cyan/Aqua color
-                          padding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppSizes.r4),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              AppStrings.secondPageNavigate,
-                              style: TextStyle(
-                                fontSize: AppSizes.font12,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.textInverse,
-                              ),
-                            ),
-                            SizedBox(width: AppSizes.p4),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: AppSizes.font12,
-                              color: AppColors.textInverse,
-                            ),
-                          ],
-                        ),
-                      ),
+                    PageNavigator(
+                      title: AppStrings.secondPageNavigate,
+                      onPressed: () =>
+                          context.push(AppRouter.monitoringDetailsPath),
                     ),
                     SizedBox(height: AppSizes.s16),
 
