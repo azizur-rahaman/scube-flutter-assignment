@@ -14,6 +14,7 @@ class AppSizes {
   static double p48 = 48.w;
 
   // Radius
+  static double r2 = 2.r;
   static double r4 = 4.r;
   static double r5 = 5.r;
   static double r8 = 8.r;
@@ -46,6 +47,8 @@ class AppSizes {
   static double s103 = 103.h;
   static double s120 = 120.w;
   static double s135 = 135.w;
+  static double s160 = 160.w; // For Chart
+  static double s200 = 200.w; // For Toggle Switcher
 
   // Icons
   static double icon14 = 14.sp;

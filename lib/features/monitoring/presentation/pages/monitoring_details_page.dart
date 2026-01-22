@@ -138,11 +138,12 @@ class MonitoringDetailsPage extends StatelessWidget {
                     alignment: Alignment.center,
                     children: [
                       SizedBox(
-                        width: 160.w,
-                        height: 160.w,
+                        width: AppSizes.s160,
+                        height: AppSizes.s160,
                         child: CircularProgressIndicator(
                           value: 0.75,
-                          strokeWidth: 20.w,
+                          strokeWidth:
+                              AppSizes.p20, // Using p20 as generic double 20
                           backgroundColor: Colors.blue.shade50,
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.lightBlue,
@@ -175,22 +176,24 @@ class MonitoringDetailsPage extends StatelessWidget {
 
                   // Source/Load Switcher
                   Container(
-                    width: 200.w,
+                    width: AppSizes.s200,
                     padding: EdgeInsets.all(AppSizes.p4),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(AppSizes.r20),
                     ),
                     child: Row(
                       children: [
                         Expanded(
                           child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 6.h),
+                            padding: EdgeInsets.symmetric(
+                              vertical: AppSizes.s6,
+                            ),
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: AppColors
                                   .primaryBlue, // Used AppColors.primaryBlue
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(AppSizes.r16),
                             ),
                             child: Text(
                               AppStrings.source,
@@ -304,7 +307,6 @@ class MonitoringDetailsPage extends StatelessWidget {
           borderRadius: isActive
               ? BorderRadius.only(
                   topLeft: Radius.circular(AppSizes.r10),
-                  topRight: Radius.circular(AppSizes.r10),
                 ) // Visual fix approx
               : null,
         ),
@@ -331,7 +333,7 @@ class MonitoringDetailsPage extends StatelessWidget {
     String status, {
     bool isLast = false,
   }) {
-    final isInactive = status == 'Inactive';
+    final isInactive = status == AppStrings.inactive;
     return Container(
       padding: EdgeInsets.all(AppSizes.p12),
       decoration: isLast
@@ -346,13 +348,17 @@ class MonitoringDetailsPage extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(8.w),
+            padding: EdgeInsets.all(AppSizes.p8),
             decoration: BoxDecoration(
               color: AppColors.surface,
               border: Border.all(color: AppColors.inputBorder.withOpacity(0.5)),
               borderRadius: BorderRadius.circular(AppSizes.r8),
             ),
-            child: Image.asset(iconPath, width: 24.sp, height: 24.sp),
+            child: Image.asset(
+              iconPath,
+              width: AppSizes.iconMedium,
+              height: AppSizes.iconMedium,
+            ),
           ),
           SizedBox(width: AppSizes.p12),
           Expanded(
@@ -362,14 +368,16 @@ class MonitoringDetailsPage extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      width: 8.w,
-                      height: 8.w,
+                      width: AppSizes.p8,
+                      height: AppSizes.p8,
                       decoration: BoxDecoration(
                         color: color,
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(
+                          AppSizes.r2,
+                        ), // approximating r2
                       ),
                     ),
-                    SizedBox(width: 4.w),
+                    SizedBox(width: AppSizes.p4),
                     Text(
                       title,
                       style: TextStyle(
@@ -377,7 +385,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                         fontSize: AppSizes.font14,
                       ),
                     ),
-                    SizedBox(width: 4.w),
+                    SizedBox(width: AppSizes.p4),
                     Text(
                       '($status)',
                       style: TextStyle(
@@ -387,16 +395,16 @@ class MonitoringDetailsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 4.h),
+                SizedBox(height: AppSizes.p4),
                 Text(
-                  'Data 1    :  $d1',
+                  '${AppStrings.data1}$d1',
                   style: TextStyle(
                     color: AppColors.textSecondary,
                     fontSize: AppSizes.font12,
                   ),
                 ),
                 Text(
-                  'Data 2    :  $d2',
+                  '${AppStrings.data2}$d2',
                   style: TextStyle(
                     color: AppColors.textSecondary,
                     fontSize: AppSizes.font12,
@@ -407,7 +415,7 @@ class MonitoringDetailsPage extends StatelessWidget {
           ),
           Icon(
             Icons.arrow_forward_ios,
-            size: 14.sp,
+            size: AppSizes.font14,
             color: AppColors.textSecondary,
           ),
         ],
@@ -426,11 +434,15 @@ class MonitoringDetailsPage extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.all(4.w),
+            padding: EdgeInsets.all(AppSizes.p4),
             decoration: BoxDecoration(color: Colors.transparent),
-            child: Image.asset(iconPath, width: 20.sp, height: 20.sp),
+            child: Image.asset(
+              iconPath,
+              width: AppSizes.icon20,
+              height: AppSizes.icon20,
+            ),
           ),
-          SizedBox(width: 8.w),
+          SizedBox(width: AppSizes.p8),
           Expanded(
             child: Text(
               title,
