@@ -6,7 +6,7 @@ class AssetManager {
   static const String thermometerIcon19 = '$_basePath/icons/19-thermometer.png';
   static const String thermometerIcon30 = '$_basePath/icons/30-thermometer.png';
 
-  static const String weatherIconMorning = '$_basePath/icons/morning.png';
+  static const String weatherIconMorning = '$_basePath/icons/morning-icon.png';
   static const String weatherIconSun = '$_basePath/icons/sun.png';
   static const String weatherIconMoon = '$_basePath/icons/mon.png';
 

@@ -86,6 +86,7 @@ class MonitoringDetailsPage extends StatelessWidget {
 
             // 2. Main Content Card
             Container(
+              height: 537.h,
               decoration: BoxDecoration(
                 color: AppColors.surface,
                 borderRadius: BorderRadius.circular(AppSizes.r10),
@@ -138,7 +139,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                         Divider(height: 1, color: AppColors.inputBorder),
 
                         // Chart Area
-                        SizedBox(height: AppSizes.s24),
+                        SizedBox(height: AppSizes.s16),
                         Stack(
                           alignment: Alignment.center,
                           children: [
@@ -176,7 +177,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: AppSizes.s24),
+                        SizedBox(height: AppSizes.s16),
 
                         // Source/Load Switcher
                         Container(
@@ -225,93 +226,86 @@ class MonitoringDetailsPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: AppSizes.s24),
+                        SizedBox(height: AppSizes.s16),
                       ],
                     ),
                   ),
 
-                  // Data List - Fixed height scrollable container
-                  Container(
-                    height: 240.h,
-                    margin: EdgeInsets.symmetric(horizontal: AppSizes.p16),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(color: AppColors.inputBorder, width: 1),
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        Scrollbar(
-                          thumbVisibility: true,
-                          thickness: 4.w,
-                          radius: Radius.circular(AppSizes.r4),
-                          child: ListView.separated(
-                            padding: EdgeInsets.zero,
-                            itemCount: 3,
-                            separatorBuilder: (context, index) => Divider(
-                              height: 1,
-                              color: AppColors.inputBorder,
+                  // Data List - Expanded scrollable container
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: AppSizes.p16),
+                      child: Stack(
+                        children: [
+                          Scrollbar(
+                            thumbVisibility: true,
+                            thickness: 4.w,
+                            radius: Radius.circular(AppSizes.r4),
+                            child: ListView.separated(
+                              padding: EdgeInsets.zero,
+                              itemCount: 3,
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox.shrink(),
+                              itemBuilder: (context, index) {
+                                if (index == 0) {
+                                  return _buildDataListItem(
+                                    AssetManager.dataViewIcon,
+                                    Colors.lightBlue,
+                                    AppStrings.dataView,
+                                    '55505.63',
+                                    '58805.63',
+                                    AppStrings.active,
+                                  );
+                                } else if (index == 1) {
+                                  return _buildDataListItem(
+                                    AssetManager.dataType2Icon,
+                                    Colors.orange,
+                                    AppStrings.dataType2,
+                                    '55505.63',
+                                    '58805.63',
+                                    AppStrings.active,
+                                  );
+                                } else {
+                                  return _buildDataListItem(
+                                    AssetManager.dataType3Icon,
+                                    Colors.lightBlue,
+                                    AppStrings.dataType3,
+                                    '55505.63',
+                                    '58805.63',
+                                    AppStrings.inactive,
+                                  );
+                                }
+                              },
                             ),
-                            itemBuilder: (context, index) {
-                              if (index == 0) {
-                                return _buildDataListItem(
-                                  AssetManager.dataViewIcon,
-                                  Colors.lightBlue,
-                                  AppStrings.dataView,
-                                  '55505.63',
-                                  '58805.63',
-                                  AppStrings.active,
-                                );
-                              } else if (index == 1) {
-                                return _buildDataListItem(
-                                  AssetManager.dataType2Icon,
-                                  Colors.orange,
-                                  AppStrings.dataType2,
-                                  '55505.63',
-                                  '58805.63',
-                                  AppStrings.active,
-                                );
-                              } else {
-                                return _buildDataListItem(
-                                  AssetManager.dataType3Icon,
-                                  Colors.lightBlue,
-                                  AppStrings.dataType3,
-                                  '55505.63',
-                                  '58805.63',
-                                  AppStrings.inactive,
-                                );
-                              }
-                            },
                           ),
-                        ),
-                        // Inner Shadow / Fade Overlay
-                        // Inner Shadow / Fade Overlay
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          height: 48.h,
-                          child: IgnorePointer(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin:
-                                      Alignment.bottomCenter, // Appear from end
-                                  end: Alignment.topCenter, // Spread to top
-                                  colors: [
-                                    Color(
-                                      0xFF19416E,
-                                    ).withOpacity(0.6), // 60% Opacity (Bottom)
-                                    Color(
-                                      0xFF2F548C,
-                                    ).withOpacity(0.0), // 0% Opacity (Top)
-                                  ],
+                          // Inner Shadow / Fade Overlay
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            height: 48.h,
+                            child: IgnorePointer(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment
+                                        .bottomCenter, // Appear from end
+                                    end: Alignment.topCenter, // Spread to top
+                                    colors: [
+                                      Color(0xFF19416E).withOpacity(
+                                        0.6,
+                                      ), // 60% Opacity (Bottom)
+                                      Color(
+                                        0xFF2F548C,
+                                      ).withOpacity(0.0), // 0% Opacity (Top)
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -398,7 +392,15 @@ class MonitoringDetailsPage extends StatelessWidget {
     final isInactive = status == AppStrings.inactive;
     return Container(
       padding: EdgeInsets.all(AppSizes.p12),
-      decoration: null,
+      margin: EdgeInsets.only(bottom: AppSizes.p8),
+      decoration: BoxDecoration(
+        color: Color(0xFFE5F4FE),
+        border: Border.all(
+          color: AppColors.primaryBlue.withOpacity(0.3),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(AppSizes.r8),
+      ),
       child: Row(
         children: [
           Container(
@@ -479,6 +481,7 @@ class MonitoringDetailsPage extends StatelessWidget {
 
   Widget _buildGridItem(String iconPath, String title) {
     return Container(
+      height: 42.h,
       padding: EdgeInsets.symmetric(horizontal: AppSizes.p8),
       decoration: BoxDecoration(
         color: AppColors.surface,
