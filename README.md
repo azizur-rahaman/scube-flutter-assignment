@@ -12,6 +12,14 @@ A premium Flutter application demonstrating a **Monitoring Dashboard System**. B
 -   **Premium Navigation**: Custom **Slide + Fade** transitions (400ms) for a polished user experience.
 -   **Responsive Design**: precise scaling using `flutter_screenutil`.
 
+## 📸 Screenshots
+
+| Login Page | Dashboard Scrolled | Dashboard Details |
+| :---: | :---: | :---: |
+| <img src="assets/screenshots/screen_1.png" width="200" /> | <img src="assets/screenshots/screen_2.png" width="200" /> | <img src="assets/screenshots/screen_3.png" width="200" /> |
+| **System Info** | **Detailed Stats** | **Login (Alt)** |
+| <img src="assets/screenshots/screen_4.png" width="200" /> | <img src="assets/screenshots/screen_5.png" width="200" /> | |
+
 ## 🏗️ Architecture
 
 The project follows **Clean Architecture** principles to ensure separation of concerns and testability.
