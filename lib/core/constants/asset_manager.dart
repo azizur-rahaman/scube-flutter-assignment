@@ -13,4 +13,14 @@ class AssetManager {
   // Deprecated/Aliases for compatibility if needed, using 17/Morning as default
   static const String thermometerIcon = thermometerIcon17;
   static const String weatherIcon = weatherIconMorning;
+
+  // Dashboard Stats Icons
+  static const String liveAcPowerIcon = '$_basePath/icons/live-ac-power.png';
+  static const String plantGenerationIcon =
+      '$_basePath/icons/plant-generation.png';
+  static const String livePrIcon = '$_basePath/icons/live-pr.png';
+  static const String cumulativePrIcon = '$_basePath/icons/cumulative-pr.png';
+  static const String returnPvIcon =
+      '$_basePath/icons/return-pv-till-today-.png';
+  static const String totalEnergyIcon = '$_basePath/icons/total-energy.png';
 }

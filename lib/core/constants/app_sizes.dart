@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSizes {
   // Padding
+  static double p2 = 2.w;
   static double p4 = 4.w;
   static double p6 = 6.w;
   static double p8 = 8.w;

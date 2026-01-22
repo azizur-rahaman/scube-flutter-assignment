@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/constants/asset_manager.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/monitoring_data.dart';
 
@@ -13,37 +14,37 @@ class DashboardStatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final stats = [
       _StatItem(
-        icon: Icons.bolt,
+        iconPath: AssetManager.liveAcPowerIcon,
         value: data.currentPower,
         label: AppStrings.liveAcPower,
         iconColor: Colors.green,
       ),
       _StatItem(
-        icon: Icons.solar_power,
+        iconPath: AssetManager.plantGenerationIcon,
         value: data.plantGeneration,
         label: AppStrings.plantGeneration,
         iconColor: Colors.teal,
       ),
       _StatItem(
-        icon: Icons.speed,
+        iconPath: AssetManager.livePrIcon,
         value: data.livePr,
         label: AppStrings.livePr,
         iconColor: Colors.indigo,
       ),
       _StatItem(
-        icon: Icons.percent,
+        iconPath: AssetManager.cumulativePrIcon,
         value: data.cumulativePr,
         label: AppStrings.cumulativePr,
         iconColor: Colors.blue,
       ),
       _StatItem(
-        icon: Icons.monetization_on,
+        iconPath: AssetManager.returnPvIcon,
         value: data.returnPv,
         label: AppStrings.returnPv,
         iconColor: Colors.orange,
       ),
       _StatItem(
-        icon: Icons.electric_bolt,
+        iconPath: AssetManager.totalEnergyIcon,
         value: data.totalEnergy,
         label: AppStrings.totalEnergy,
         iconColor: Colors.purple,
@@ -57,7 +58,7 @@ class DashboardStatsGrid extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: AppSizes.p8,
         mainAxisSpacing: AppSizes.s8,
-        childAspectRatio: 2.0, // Compact height but enough for 2-line labels
+        childAspectRatio: 2.2, // Compact height but enough for 2-line labels
       ),
       itemCount: stats.length,
       itemBuilder: (context, index) {
@@ -68,13 +69,13 @@ class DashboardStatsGrid extends StatelessWidget {
 }
 
 class _StatItem {
-  final IconData icon;
+  final String iconPath;
   final String value;
   final String label;
   final Color iconColor;
 
   _StatItem({
-    required this.icon,
+    required this.iconPath,
     required this.value,
     required this.label,
     required this.iconColor,
@@ -91,7 +92,7 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: AppSizes.p4,
-        vertical: AppSizes.s4,
+        vertical: AppSizes.p2,
       ),
       decoration: BoxDecoration(
         color: AppColors.surface,
@@ -107,14 +108,15 @@ class _StatCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: AppSizes.r12,
-            backgroundColor: item.iconColor.withOpacity(0.1),
-            child: Icon(
-              item.icon,
-              size: AppSizes.icon14,
-              color: item.iconColor,
+          Container(
+            height: AppSizes.s24,
+            width: AppSizes.s24,
+            padding: EdgeInsets.all(4.0),
+            decoration: BoxDecoration(
+              color: item.iconColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(AppSizes.r4),
             ),
+            child: Image.asset(item.iconPath, fit: BoxFit.contain),
           ),
           SizedBox(width: AppSizes.p6),
           Expanded(
