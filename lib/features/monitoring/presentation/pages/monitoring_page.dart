@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/routes/app_router.dart';
 import '../../../../core/constants/asset_manager.dart';
 import '../../../../injection_container.dart';
 import '../bloc/monitoring_bloc.dart';
@@ -91,7 +92,7 @@ class MonitoringPage extends StatelessWidget {
                       height: AppSizes.s32,
                       child: ElevatedButton(
                         onPressed: () {
-                          context.push('/monitoring-details');
+                          context.push(AppRouter.monitoringDetailsPath);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -106,7 +107,7 @@ class MonitoringPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              AppStrings.navigateButton,
+                              AppStrings.secondPageNavigate,
                               style: TextStyle(
                                 fontSize: AppSizes.font12,
                                 fontWeight: FontWeight.bold,

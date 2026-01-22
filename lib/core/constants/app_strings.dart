@@ -11,7 +11,8 @@ class AppStrings {
   static const String registerNow = "Register Now";
   // Monitoring Page
   static const String page1Title = '1st Page';
-  static const String navigateButton = '2nd Page Navigate';
+  static const String firstPageNavigate = '1st Page Navigate';
+  static const String secondPageNavigate = '2nd Page Navigate';
   static const String totalPvModules = 'Total Num of PV Module  :  ';
 
   // Dashboard Stats

@@ -9,8 +9,23 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/asset_manager.dart';
 
-class MonitoringDetailsPage extends StatelessWidget {
+import '../../../../core/routes/app_router.dart';
+
+class MonitoringDetailsPage extends StatefulWidget {
   const MonitoringDetailsPage({super.key});
+
+  @override
+  State<MonitoringDetailsPage> createState() => _MonitoringDetailsPageState();
+}
+
+class _MonitoringDetailsPageState extends State<MonitoringDetailsPage> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +66,10 @@ class MonitoringDetailsPage extends StatelessWidget {
               height: AppSizes.s32,
               child: ElevatedButton(
                 onPressed: () {
-                  context.pop(); // Go back to 1st Page
+                  context.go(AppRouter.monitoringPath);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.secondaryCyan,
+                  backgroundColor: AppColors.secondaryCyan, // Cyan/Aqua color
                   padding: EdgeInsets.zero,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(AppSizes.r4),
@@ -65,7 +80,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      AppStrings.navigateBack,
+                      AppStrings.firstPageNavigate,
                       style: TextStyle(
                         fontSize: AppSizes.font12,
                         fontWeight: FontWeight.bold,
@@ -82,6 +97,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
+
             SizedBox(height: AppSizes.s16),
 
             // 2. Main Content Card
@@ -151,7 +167,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                                 strokeWidth: AppSizes.p20,
                                 backgroundColor: Colors.blue.shade50,
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.lightBlue,
+                                  AppColors.primaryBlue,
                                 ),
                               ),
                             ),
@@ -168,7 +184,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                                 Text(
                                   '5.53 kw',
                                   style: TextStyle(
-                                    fontSize: AppSizes.font18,
+                                    fontSize: AppSizes.font16,
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.textDarkBlue,
                                   ),
@@ -182,7 +198,6 @@ class MonitoringDetailsPage extends StatelessWidget {
                         // Source/Load Switcher
                         Container(
                           width: AppSizes.s200,
-                          padding: EdgeInsets.all(AppSizes.p4),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(AppSizes.r20),
@@ -227,6 +242,7 @@ class MonitoringDetailsPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: AppSizes.s16),
+                        Divider(thickness: 2, color: AppColors.inputBorder),
                       ],
                     ),
                   ),
@@ -239,9 +255,11 @@ class MonitoringDetailsPage extends StatelessWidget {
                         children: [
                           Scrollbar(
                             thumbVisibility: true,
+                            controller: _scrollController,
                             thickness: 4.w,
                             radius: Radius.circular(AppSizes.r4),
                             child: ListView.separated(
+                              controller: _scrollController,
                               padding: EdgeInsets.zero,
                               itemCount: 3,
                               separatorBuilder: (context, index) =>
@@ -318,7 +336,7 @@ class MonitoringDetailsPage extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
-              childAspectRatio: 2.5,
+              childAspectRatio: 3,
               crossAxisSpacing: AppSizes.p12,
               mainAxisSpacing: AppSizes.p12,
               children: [
@@ -364,6 +382,7 @@ class MonitoringDetailsPage extends StatelessWidget {
           borderRadius: isActive
               ? BorderRadius.only(
                   topLeft: Radius.circular(AppSizes.r10),
+                  topRight: Radius.circular(AppSizes.r10),
                 ) // Visual fix approx
               : null,
         ),
@@ -481,12 +500,12 @@ class MonitoringDetailsPage extends StatelessWidget {
 
   Widget _buildGridItem(String iconPath, String title) {
     return Container(
-      height: 42.h,
+      height: AppSizes.s42,
       padding: EdgeInsets.symmetric(horizontal: AppSizes.p8),
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppSizes.r8),
-        border: Border.all(color: AppColors.inputBorder.withOpacity(0.5)),
+        border: Border.all(color: Color(0xFFB6B8D0), width: 1),
       ),
       child: Row(
         children: [
@@ -505,7 +524,7 @@ class MonitoringDetailsPage extends StatelessWidget {
               title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: AppSizes.font12,
+                fontSize: AppSizes.font14,
                 color: AppColors.textSecondary,
               ),
               maxLines: 2,
