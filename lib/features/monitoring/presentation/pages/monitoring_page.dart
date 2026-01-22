@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -66,7 +67,7 @@ class MonitoringPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(width: AppSizes.p8),
+            SizedBox(width: AppSizes.p12),
           ],
         ),
         body: BlocBuilder<MonitoringBloc, MonitoringState>(
@@ -89,7 +90,9 @@ class MonitoringPage extends StatelessWidget {
                       width: double.infinity,
                       height: AppSizes.s32,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push('/monitoring-details');
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               AppColors.secondaryCyan, // Cyan/Aqua color
