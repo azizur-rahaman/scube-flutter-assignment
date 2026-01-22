@@ -11,6 +11,7 @@ import '../widgets/dashboard_stats_grid.dart';
 import '../widgets/weather_carousel.dart';
 import '../widgets/comparison_table.dart';
 import '../widgets/inverter_list.dart';
+import '../widgets/info_tile.dart';
 
 class MonitoringPage extends StatelessWidget {
   const MonitoringPage({super.key});
@@ -204,7 +205,7 @@ class MonitoringPage extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: _InfoTile(
+              child: InfoTile(
                 icon: Icons.speed,
                 label: AppStrings.totalAcCapacity,
                 value: systemInfo.totalAcCapacity,
@@ -212,7 +213,7 @@ class MonitoringPage extends StatelessWidget {
             ),
             SizedBox(width: AppSizes.p8),
             Expanded(
-              child: _InfoTile(
+              child: InfoTile(
                 icon: Icons.speed,
                 label: AppStrings.totalDcCapacity,
                 value: systemInfo.totalDcCapacity,
@@ -224,7 +225,7 @@ class MonitoringPage extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: _InfoTile(
+              child: InfoTile(
                 icon: Icons.calendar_today,
                 label: AppStrings.dateOfCommissioning,
                 value: systemInfo.commissioningDate,
@@ -232,7 +233,7 @@ class MonitoringPage extends StatelessWidget {
             ),
             SizedBox(width: AppSizes.p8),
             Expanded(
-              child: _InfoTile(
+              child: InfoTile(
                 icon: Icons.grid_view,
                 label: AppStrings.numberOfInverter,
                 value: systemInfo.inverterCount,
@@ -247,7 +248,7 @@ class MonitoringPage extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: _InfoTile(
+              child: InfoTile(
                 icon: Icons.speed,
                 label: AppStrings.totalAcCapacity,
                 value: systemInfo.totalAcCapacity,
@@ -255,7 +256,7 @@ class MonitoringPage extends StatelessWidget {
             ),
             SizedBox(width: AppSizes.p8),
             Expanded(
-              child: _InfoTile(
+              child: InfoTile(
                 icon: Icons.speed,
                 label: AppStrings.totalDcCapacity,
                 value: systemInfo.totalDcCapacity,
@@ -264,65 +265,6 @@ class MonitoringPage extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-}
-
-class _InfoTile extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
-
-  const _InfoTile({
-    required this.icon,
-    required this.label,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(AppSizes.p12),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(AppSizes.r8),
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: AppSizes.r16,
-            backgroundColor: AppColors.primaryBlue.withOpacity(0.1),
-            child: Icon(
-              icon,
-              size: AppSizes.icon18,
-              color: AppColors.primaryBlue,
-            ),
-          ),
-          SizedBox(width: AppSizes.p8),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: AppSizes.font10,
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-                Text(
-                  value, // Using the value as requested
-                  style: TextStyle(
-                    fontSize: AppSizes.font12,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
