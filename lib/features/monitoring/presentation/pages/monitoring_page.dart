@@ -91,8 +91,9 @@ class MonitoringPage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               AppColors.secondaryCyan, // Cyan/Aqua color
+                          padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppSizes.r8),
+                            borderRadius: BorderRadius.circular(AppSizes.r4),
                           ),
                           elevation: 0,
                         ),
@@ -110,7 +111,7 @@ class MonitoringPage extends StatelessWidget {
                             SizedBox(width: AppSizes.p4),
                             Icon(
                               Icons.arrow_forward_ios,
-                              size: AppSizes.iconSmall,
+                              size: AppSizes.font12,
                               color: AppColors.textInverse,
                             ),
                           ],
