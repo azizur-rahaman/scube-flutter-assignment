@@ -29,10 +29,14 @@ class AppSizes {
   static double s8 = 8.h;
   static double s12 = 12.h;
   static double s16 = 16.h;
+  static double s22 = 22.h;
   static double s24 = 24.h;
   static double s30 = 30.w;
   static double s31 = 31.h;
   static double s32 = 32.h;
+  static double s34 = 34.h;
+  static double s36 = 36.h;
+  static double s38 = 38.h;
   static double s40 = 40.h;
   static double s48 = 48.h;
   static double s57 = 57.w;
