@@ -118,138 +118,201 @@ class MonitoringDetailsPage extends StatelessWidget {
                     ),
                   ),
 
-                  // Header
+                  // Content with horizontal padding
                   Padding(
-                    padding: EdgeInsets.all(AppSizes.p16),
-                    child: Text(
-                      AppStrings.electricity,
-                      style: GoogleFonts.inter(
-                        fontSize: AppSizes.font16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ),
-                  Divider(height: 1, color: AppColors.inputBorder),
-
-                  // Chart Area
-                  SizedBox(height: AppSizes.s24),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      SizedBox(
-                        width: AppSizes.s160,
-                        height: AppSizes.s160,
-                        child: CircularProgressIndicator(
-                          value: 0.75,
-                          strokeWidth:
-                              AppSizes.p20, // Using p20 as generic double 20
-                          backgroundColor: Colors.blue.shade50,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.lightBlue,
-                          ),
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            AppStrings.totalPower,
-                            style: TextStyle(
-                              fontSize: AppSizes.font12,
+                    padding: EdgeInsets.symmetric(horizontal: AppSizes.p16),
+                    child: Column(
+                      children: [
+                        // Header
+                        Padding(
+                          padding: EdgeInsets.all(AppSizes.p16),
+                          child: Text(
+                            AppStrings.electricity,
+                            style: GoogleFonts.inter(
+                              fontSize: AppSizes.font16,
+                              fontWeight: FontWeight.bold,
                               color: AppColors.textSecondary,
                             ),
                           ),
-                          Text(
-                            '5.53 kw', // Dynamic value, keeping as is or could be string formatted
-                            style: TextStyle(
-                              fontSize: AppSizes.font18,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textDarkBlue,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: AppSizes.s24),
+                        ),
+                        Divider(height: 1, color: AppColors.inputBorder),
 
-                  // Source/Load Switcher
-                  Container(
-                    width: AppSizes.s200,
-                    padding: EdgeInsets.all(AppSizes.p4),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(AppSizes.r20),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              vertical: AppSizes.s6,
-                            ),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: AppColors
-                                  .primaryBlue, // Used AppColors.primaryBlue
-                              borderRadius: BorderRadius.circular(AppSizes.r16),
-                            ),
-                            child: Text(
-                              AppStrings.source,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: AppSizes.font12,
+                        // Chart Area
+                        SizedBox(height: AppSizes.s24),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              width: AppSizes.s160,
+                              height: AppSizes.s160,
+                              child: CircularProgressIndicator(
+                                value: 0.75,
+                                strokeWidth: AppSizes.p20,
+                                backgroundColor: Colors.blue.shade50,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.lightBlue,
+                                ),
                               ),
                             ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  AppStrings.totalPower,
+                                  style: TextStyle(
+                                    fontSize: AppSizes.font12,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                                Text(
+                                  '5.53 kw',
+                                  style: TextStyle(
+                                    fontSize: AppSizes.font18,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.textDarkBlue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: AppSizes.s24),
+
+                        // Source/Load Switcher
+                        Container(
+                          width: AppSizes.s200,
+                          padding: EdgeInsets.all(AppSizes.p4),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(AppSizes.r20),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: AppSizes.s6,
+                                  ),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primaryBlue,
+                                    borderRadius: BorderRadius.circular(
+                                      AppSizes.r16,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    AppStrings.source,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: AppSizes.font12,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    AppStrings.load,
+                                    style: TextStyle(
+                                      color: AppColors.textSecondary,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: AppSizes.font12,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        Expanded(
-                          child: Center(
-                            child: Text(
-                              AppStrings.load,
-                              style: TextStyle(
-                                color: AppColors.textSecondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: AppSizes.font12,
+                        SizedBox(height: AppSizes.s24),
+                      ],
+                    ),
+                  ),
+
+                  // Data List - Fixed height scrollable container
+                  Container(
+                    height: 240.h,
+                    margin: EdgeInsets.symmetric(horizontal: AppSizes.p16),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: AppColors.inputBorder, width: 1),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Scrollbar(
+                          thumbVisibility: true,
+                          thickness: 4.w,
+                          radius: Radius.circular(AppSizes.r4),
+                          child: ListView.separated(
+                            padding: EdgeInsets.zero,
+                            itemCount: 3,
+                            separatorBuilder: (context, index) => Divider(
+                              height: 1,
+                              color: AppColors.inputBorder,
+                            ),
+                            itemBuilder: (context, index) {
+                              if (index == 0) {
+                                return _buildDataListItem(
+                                  AssetManager.dataViewIcon,
+                                  Colors.lightBlue,
+                                  AppStrings.dataView,
+                                  '55505.63',
+                                  '58805.63',
+                                  AppStrings.active,
+                                );
+                              } else if (index == 1) {
+                                return _buildDataListItem(
+                                  AssetManager.dataType2Icon,
+                                  Colors.orange,
+                                  AppStrings.dataType2,
+                                  '55505.63',
+                                  '58805.63',
+                                  AppStrings.active,
+                                );
+                              } else {
+                                return _buildDataListItem(
+                                  AssetManager.dataType3Icon,
+                                  Colors.lightBlue,
+                                  AppStrings.dataType3,
+                                  '55505.63',
+                                  '58805.63',
+                                  AppStrings.inactive,
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        // Inner Shadow / Fade Overlay
+                        // Inner Shadow / Fade Overlay
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          height: 48.h,
+                          child: IgnorePointer(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin:
+                                      Alignment.bottomCenter, // Appear from end
+                                  end: Alignment.topCenter, // Spread to top
+                                  colors: [
+                                    Color(
+                                      0xFF19416E,
+                                    ).withOpacity(0.6), // 60% Opacity (Bottom)
+                                    Color(
+                                      0xFF2F548C,
+                                    ).withOpacity(0.0), // 0% Opacity (Top)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(height: AppSizes.s24),
-                  Divider(height: 1, color: AppColors.inputBorder),
-
-                  // Data List
-                  _buildDataListItem(
-                    AssetManager.dataViewIcon,
-                    Colors.lightBlue,
-                    AppStrings.dataView,
-                    '55505.63',
-                    '58805.63',
-                    AppStrings.active,
-                  ),
-                  Divider(height: 1, color: AppColors.inputBorder),
-                  _buildDataListItem(
-                    AssetManager.dataType2Icon,
-                    Colors.orange,
-                    AppStrings.dataType2,
-                    '55505.63',
-                    '58805.63',
-                    AppStrings.active,
-                  ),
-                  Divider(height: 1, color: AppColors.inputBorder),
-                  _buildDataListItem(
-                    AssetManager.dataType3Icon,
-                    Colors.lightBlue,
-                    AppStrings.dataType3,
-                    '55505.63',
-                    '58805.63',
-                    AppStrings.inactive,
-                    isLast: true,
                   ),
                 ],
               ),
@@ -330,21 +393,12 @@ class MonitoringDetailsPage extends StatelessWidget {
     String title,
     String d1,
     String d2,
-    String status, {
-    bool isLast = false,
-  }) {
+    String status,
+  ) {
     final isInactive = status == AppStrings.inactive;
     return Container(
       padding: EdgeInsets.all(AppSizes.p12),
-      decoration: isLast
-          ? BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.white, Colors.blue.shade50.withOpacity(0.5)],
-              ),
-            )
-          : null,
+      decoration: null,
       child: Row(
         children: [
           Container(
