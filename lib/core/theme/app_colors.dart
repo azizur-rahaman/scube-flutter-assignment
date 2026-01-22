@@ -14,8 +14,8 @@ class AppColors {
 
   static const LinearGradient weatherGradient = LinearGradient(
     colors: [
-      Color(0xFF6A85B6),
-      Color(0xFFBAC8E0),
+      Color(0xFF5B7FFF), // Lighter Blue/Purple
+      Color(0xFFA678D6), // Purple/Pinkish
     ], // Placeholder for purple/blue weather card
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,

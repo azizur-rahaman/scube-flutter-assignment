@@ -22,6 +22,11 @@ class AppStrings {
   static const String returnPv = 'Return PV(In Today)';
   static const String totalEnergy = 'Total Energy';
 
+  // Weather Card
+  static const String moduleTemperature = 'Module\nTemperature';
+  static const String windSpeedDirection = 'Wind Speed & Direction';
+  static const String effectiveIrradiation = 'Effective Irradiation';
+
   // System Info
   static const String totalAcCapacity = 'Total AC Capacity';
   static const String totalDcCapacity = 'Total DC Capacity';

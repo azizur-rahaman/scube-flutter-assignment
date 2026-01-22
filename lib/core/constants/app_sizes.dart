@@ -34,6 +34,7 @@ class AppSizes {
   static double s60 = 60.h;
   static double s80 = 80.h;
   static double s120 = 120.w;
+  static double s135 = 135.w;
 
   // Icons
   static double icon14 = 14.sp;
@@ -44,6 +45,7 @@ class AppSizes {
   static double iconLarge = 32.sp;
 
   // Font Sizes
+  static double font8 = 8.sp;
   static double font9 = 9.sp;
   static double font10 = 10.sp;
   static double font11 = 11.sp;
