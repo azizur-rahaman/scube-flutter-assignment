@@ -23,4 +23,6 @@ class AssetManager {
   static const String returnPvIcon =
       '$_basePath/icons/return-pv-till-today-.png';
   static const String totalEnergyIcon = '$_basePath/icons/total-energy.png';
+  static const String totalNumOfPvModuleIcon =
+      '$_basePath/icons/total-num-of-pv-module.png';
 }

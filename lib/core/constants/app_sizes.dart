@@ -46,6 +46,7 @@ class AppSizes {
   static double iconSmall = 16.sp;
   static double icon18 = 18.sp;
   static double icon20 = 20.sp;
+  static double icon22 = 22.sp;
   static double iconMedium = 24.sp;
   static double iconLarge = 32.sp;
 

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_sizes.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/constants/asset_manager.dart';
 import '../../../../injection_container.dart';
 import '../bloc/monitoring_bloc.dart';
 import '../widgets/dashboard_stats_grid.dart';
@@ -134,18 +135,22 @@ class MonitoringPage extends StatelessWidget {
 
                     // System Info Header
                     Container(
-                      padding: EdgeInsets.all(AppSizes.p12),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSizes.p4,
+                        vertical: AppSizes.p6,
+                      ),
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: AppColors.surface,
                         borderRadius: BorderRadius.circular(AppSizes.r8),
                       ),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.solar_power_outlined,
-                            size: AppSizes.icon20,
-                            color: AppColors.primaryBlue,
+                          Image.asset(
+                            AssetManager.totalNumOfPvModuleIcon,
+                            width: AppSizes.icon22,
+                            height: AppSizes.icon22,
                           ),
                           SizedBox(width: AppSizes.p8),
                           Expanded(
