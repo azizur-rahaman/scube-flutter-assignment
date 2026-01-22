@@ -32,4 +32,11 @@ class AppStrings {
   static const String totalDcCapacity = 'Total DC Capacity';
   static const String dateOfCommissioning = 'Date of Commissioning';
   static const String numberOfInverter = 'Number of Inverter';
+
+  // Comparison Table
+  static const String yesterdaysData = "Yesterday's Data";
+  static const String todaysData = "Today's Data";
+  static const String acMaxPower = 'AC Max Power';
+  static const String netEnergy = 'Net Energy';
+  static const String specificYield = 'Specific Yield';
 }

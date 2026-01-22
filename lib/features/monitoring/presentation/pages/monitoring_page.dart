@@ -119,8 +119,6 @@ class MonitoringPage extends StatelessWidget {
 
                     // Stats Grid
                     DashboardStatsGrid(data: state.data),
-                    SizedBox(height: AppSizes.s16),
-
                     // Weather Carousel
                     WeatherCarousel(
                       temperature: state.data.weather.temperature,

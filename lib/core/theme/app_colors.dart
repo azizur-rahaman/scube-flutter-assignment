@@ -27,6 +27,7 @@ class AppColors {
     0xFFE8F1F8,
   ); // Light bluish gray background
   static const Color surface = Colors.white;
+  static const Color tableRowHighlight = Color(0xFFEEF3F9);
 
   // Text Colors
   static const Color textPrimary = Color(0xFF1A1A1A);
@@ -41,6 +42,6 @@ class AppColors {
   static const Color notificationRed = Colors.red;
 
   // Specific UI Elements
-  static const Color inputBorder = Color(0xFFE0E0E0);
+  static const Color inputBorder = Color(0xFF9AA9BC);
   static const Color divider = Color(0xFFEEEEEE);
 }

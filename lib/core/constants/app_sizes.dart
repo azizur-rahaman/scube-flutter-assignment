@@ -31,6 +31,7 @@ class AppSizes {
   static double s16 = 16.h;
   static double s24 = 24.h;
   static double s30 = 30.w;
+  static double s31 = 31.h;
   static double s32 = 32.h;
   static double s40 = 40.h;
   static double s48 = 48.h;

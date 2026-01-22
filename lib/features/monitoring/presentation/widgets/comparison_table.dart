@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_sizes.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/entities/monitoring_data.dart';
 
@@ -13,94 +13,156 @@ class ComparisonTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(10.r),
+        color: AppColors.surface, // Container background
+        borderRadius: BorderRadius.circular(AppSizes.r8),
       ),
-      child: Table(
-        columnWidths: const {
-          0: FlexColumnWidth(2),
-          1: FlexColumnWidth(1.5),
-          2: FlexColumnWidth(1.5),
-        },
-        border: TableBorder(
-          horizontalInside: BorderSide(color: AppColors.inputBorder, width: 1),
-        ),
+      clipBehavior: Clip.antiAlias, // To clip children to border radius
+      child: Column(
         children: [
+          // Header Row
           _buildHeaderRow(),
-          _buildRow(
-            'AC Max Power',
-            comparison.yesterday.acMaxPower,
-            comparison.today.acMaxPower,
+
+          // Data Rows (Zebra Striped)
+          _buildDataRow(
+            label: AppStrings.acMaxPower,
+            valYesterday: comparison.yesterday.acMaxPower,
+            valToday: comparison.today.acMaxPower,
+            index: 0,
           ),
-          _buildRow(
-            'Net Energy',
-            comparison.yesterday.netEnergy,
-            comparison.today.netEnergy,
-            isBold: true,
+          _buildDataRow(
+            label: AppStrings.netEnergy,
+            valYesterday: comparison.yesterday.netEnergy,
+            valToday: comparison
+                .yesterday
+                .netEnergy, // Using netEnergy for comparison
+            index: 1,
           ),
-          _buildRow(
-            'Specific Yield',
-            comparison.yesterday.specificYield,
-            comparison.today.specificYield,
+          _buildDataRow(
+            label: AppStrings.specificYield,
+            valYesterday: comparison.yesterday.specificYield,
+            valToday: comparison.today.specificYield,
+            index: 2,
           ),
-          // Duplicate rows to match design roughly if needed, or stick to data
-          // The design shows duplicated Net Energy and Specific Yield rows, perhaps for different meters?
-          // Using provided data structure.
+          _buildDataRow(
+            label: AppStrings.netEnergy,
+            valYesterday: comparison.yesterday.netEnergy,
+            valToday: comparison.yesterday.netEnergy,
+            index: 3,
+          ),
+          _buildDataRow(
+            label: AppStrings.specificYield,
+            valYesterday: comparison.yesterday.specificYield,
+            valToday: comparison.today.specificYield,
+            index: 4,
+          ),
         ],
       ),
     );
   }
 
-  TableRow _buildHeaderRow() {
-    return TableRow(
-      children: [
-        SizedBox(height: 40.h),
-        Center(
-          child: Text(
-            "Yesterday's Data",
-            style: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary),
-          ),
+  Widget _buildHeaderRow() {
+    return Container(
+      height: AppSizes.s31,
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.p16),
+      decoration: const BoxDecoration(
+        color: AppColors.surface,
+        border: Border(
+          bottom: BorderSide(color: AppColors.inputBorder, width: 1.5),
         ),
-        Center(
-          child: Text(
-            "Today's Data",
-            style: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary),
+      ),
+      child: Row(
+        children: [
+          Expanded(flex: 2, child: SizedBox.shrink()), // Empty first column
+          Expanded(
+            flex: 2,
+            child: Text(
+              AppStrings.yesterdaysData,
+              textAlign: TextAlign
+                  .left, // Align right usually looks cleaner for columns
+              style: TextStyle(
+                fontSize: AppSizes.font12,
+                color: AppColors
+                    .textPrimary, // Changed to darker color based on image
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
-        ),
-      ],
+          SizedBox(width: AppSizes.p4),
+          Expanded(
+            flex: 2,
+            child: Text(
+              AppStrings.todaysData,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: AppSizes.font12,
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  TableRow _buildRow(
-    String label,
-    String val1,
-    String val2, {
-    bool isBold = false,
+  Widget _buildDataRow({
+    required String label,
+    required String valYesterday,
+    required String valToday,
+    required int index,
   }) {
-    final style = TextStyle(
-      fontSize: 12.sp,
-      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-      color: AppColors.textPrimary,
-    );
+    // Zebra striping: Even rows (0, 2...) are white, Odd rows (1, 3...) are light blue
+    // Looking at the image: Row 1 (AC) = White. Row 2 (Net) = Light Blue. Row 3 (Specific) = White.
+    final bool isEven = index % 2 == 0;
+    final backgroundColor = isEven
+        ? AppColors.surface
+        : AppColors.tableRowHighlight;
 
-    return TableRow(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-          child: Text(
-            label,
-            style: style.copyWith(color: AppColors.textSecondary),
+    return Container(
+      height: AppSizes.s31, // Fixed height per user request
+      color: backgroundColor,
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.p16),
+      alignment: Alignment.centerLeft, // Align content vertically center
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: AppSizes.font12,
+                color: AppColors.textPrimary, // Darker text for labels too
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          child: Center(child: Text(val1, style: style)),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          child: Center(child: Text(val2, style: style)),
-        ),
-      ],
+          Expanded(
+            flex: 2,
+            child: Text(
+              valYesterday,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: AppSizes.font12,
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.bold, // Bolding the numeric values
+              ),
+            ),
+          ),
+          SizedBox(width: AppSizes.p4),
+          Expanded(
+            flex: 2,
+            child: Text(
+              valToday,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: AppSizes.font12,
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
